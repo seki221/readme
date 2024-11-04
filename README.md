@@ -86,7 +86,7 @@ Gem: carrierwave<br>
 「地点を追加」ボタンを押すと、入力フィールドが動的に追加されるようにします。<br>
 4. お気に入り機能<br>
 技術: Ruby, Rails<br>
-Gem: acts_as_favoritableなど（お気に入り用Gem）または自作リレーション<br>
+Gem: acts_as_favoritableなど（お気に入り用Gem）または自作リレーション（カリキュラムでやったものかと）<br>
 お気に入りの地点や旅行記録をリストに追加する<br>
 5. 検索機能<br>
 技術: Ruby, Rails<br>
