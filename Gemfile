@@ -81,4 +81,6 @@ group :test do
   gem "capybara"
   # gem "selenium-webdriver"
 
+gem 'pg', group: :production
+
 end
