@@ -171,7 +171,7 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.25.1)
+    minitest (5.25.2)
     momentjs-rails (2.29.4.1)
       railties (>= 3.1)
     msgpack (1.7.5)
@@ -245,7 +245,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.7.0)
+    rdoc (6.8.1)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
     reline (0.5.11)
@@ -302,7 +302,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  bootsnap
+  bootsnap (>= 1.4.4)
   capybara
   debug
   devise (~> 4.9)
