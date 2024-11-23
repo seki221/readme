@@ -1,18 +1,20 @@
 services:
   db:
-    image: mysql:8.0
+    image: postgres:latest
     platform: linux/amd64
     restart: always
     environment:
       TZ: Asia/Tokyo
-      MYSQL_ROOT_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: trip_schedule_development
     volumes:
-      - mysql_data:/var/lib/mysql
+      - pg_data:/var/lib/postgresql/data
     ports:
-      - 3306:3306
+      - "5432:5432"
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec rails s -b 0.0.0.0
     tty: true
     stdin_open: true
     volumes:
@@ -32,6 +34,6 @@ services:
     ports:
       - 4444:4444
 volumes:
-  mysql_data:
+  pg_data:
   bundle_data:
   node_modules:

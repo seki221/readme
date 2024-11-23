@@ -13,14 +13,14 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: postgres
   password: password
   host: db
-  port: 3306
+  port: 5432
 
 development:
   <<: *default
-  database: trip_scedule_development
+  database: trip_schedule_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -51,6 +51,6 @@ test:
 #
 production:
   <<: *default
-  database: my_project_production
-  username: my_project
-  password: <%= ENV["MY_PROJECT_DATABASE_PASSWORD"] %>
+  database: trip_schedule_production
+  username: <%= ENV['DATABASE_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || 'password' %>

@@ -10,15 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_20_023125) do
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema.define(version: 2024_11_21_012405) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "destination"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer "cost"
+    t.text "review"
+    t.string "transportation"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "nickname"
     t.string "email", null: false
     t.string "salt"
     t.integer "role"
     t.string "crypted_password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
