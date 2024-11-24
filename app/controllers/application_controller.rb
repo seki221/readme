@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    if resource_class == User
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password])
+      devise_parameter_sanitizer.permit(:sign_in,keys:[:email, :password])
+      devise_parameter_sanitizer.permit(:account_update,keys:[:nickname, :email, :password, :current_password])
+    end
   end
 
   def set_search
