@@ -1,11 +1,15 @@
 {
   "name": "trip-schedule-app",
   "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.x",
+    "yarn": "1.x"
+  },
   "dependencies": {
     "@rails/ujs": "^6.0.0",
     "turbolinks": "^5.2.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/actioncable": "^6.0.0"
-  },
-  "version": "0.1.0"
+  }
 }
