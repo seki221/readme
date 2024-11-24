@@ -305,7 +305,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   capybara
   debug
-  devise (~> 4.9)
+  devise
   factory_bot_rails
   faker
   fullcalendar-rails
@@ -314,11 +314,13 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   listen (~> 3.3)
+  minitest (~> 5.25)
   mysql2 (~> 0.5)
   pg
   puma (~> 5.0)
   rails (~> 6.1.4)
   ransack
+  rdoc (~> 6.8)
   sprockets-rails
   stimulus-rails
   turbo-rails
