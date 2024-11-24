@@ -3693,3 +3693,16 @@ Processing by SchedulesController#index as HTML
 Completed 200 OK in 144ms (Views: 36.6ms | ActiveRecord: 56.3ms | Allocations: 17154)
 
 
+Started GET "/users/sign_up" for 192.168.65.1 at 2024-11-24 13:20:59 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 203)
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 496)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 14.5ms | Allocations: 2687)
+  Rendered shared/_flash_message.html.erb (Duration: 0.7ms | Allocations: 168)
+  Rendered layout layouts/application.html.erb (Duration: 55.8ms | Allocations: 7760)
+Completed 200 OK in 222ms (Views: 63.8ms | ActiveRecord: 73.1ms | Allocations: 19934)
+
+
