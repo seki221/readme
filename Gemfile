@@ -75,7 +75,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem 'devise'
 end
 
 group :test do
@@ -84,5 +83,7 @@ group :test do
   # gem "selenium-webdriver"
 
 gem 'pg', group: :production
+gem 'devise', group: [:development, :test, :production]
+
 
 end
