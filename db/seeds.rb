@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'factory_bot_rails'
+
+# ユーザーを作成
+puts 'start create users ...'
+users = FactoryBot.create_list(:user, 1)
+puts 'finish create users ...'
+
+# スケジュールを作成
+puts 'start create schedules ...'
+schedules = 3.times.map do
+  FactoryBot.create(:schedule, user: users.sample, image_url: "https://via.placeholder.com/250*150")
+end
+puts 'finish create schedules ...'
