@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="d-flex">
+      <%= search_form_for @q, url: schedules_path, method: :get, local: true do |f| %>
+        <%= f.search_field :title_or_body_cont, class: 'form-control me-2', placeholder: '検索', id: 'search_field_of_post' %>
+      <% end %>
+    </form>
+    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+      <% if current_user.present? %>
+        <li class="nav-item">
+          <%= link_to 'Home' , root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'favorite' , favorite_path, class: 'nav-link' %>
+        </li>
+          <li class="nav-item">
+            <%= link_to 'ログアウト' , logout_path, class: 'nav-link' , method: :delete, data: { confirm: 'ログアウトします' } %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'ユーザー登録' , sign_up_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログイン' , login_path, class: 'nav-link' %>
+          </li>
+          <% end %>
+    </ul>
+  </div>
+</nav>

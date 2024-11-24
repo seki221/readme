@@ -1,0 +1,26 @@
+<div class="container card-grid">
+  <div class="row">
+    <% if @schedules.present? %>
+      <% @schedules.each do |schedule| %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div>
+            </div>
+            <div class="card-body">
+              
+              <p class="card-text"><%= schedule.start_at %> 〜 <%= schedule.end_at %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <p>No schedules available</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<a href="/schedules/new" class="add-schedule-button">
+  <i class="fas fa-plus"></i>
+</a>
