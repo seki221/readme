@@ -131,9 +131,26 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
 }
 
 .add-schedule-button:hover {
   background-color: #5a6268;
   /* ホバー時の色 */
+}
+.add-schedule-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.add-schedule-link svg {
+  width: 52px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.add-schedule-link:hover path {
+  fill: #4dabf7;
+  /* ホバー時に色を変える */
 }
