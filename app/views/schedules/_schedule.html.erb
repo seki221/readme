@@ -1,0 +1,27 @@
+<% @schedules.each do |schedule| %>
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div class="card">
+    <div class="card-title #9d9d9d">
+        
+    </div>
+    <div class="card-body">
+
+      <p class="card-text">
+        <%= link_to "#{schedule.start_at.strftime('%Y-%m-%d %H:%M')} 〜 #{schedule.end_at.strftime('%Y-%m-%d %H:%M')}".html_safe, schedule_path(schedule), class: 'text-primary' %>
+      </p>
+      <div class="d-flex">
+        <% if current_user.own?(schedule) %>
+          <div class='ms-auto'>
+            <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+              <i class="bi bi-pencil-fill"></i>
+            <% end %>
+            <%= link_to schedule,  id: "button-delete-#{schedule.id}", data: { turbo_method: "delete", turbo_confirm: "削除しますか？" } do %>
+              <i class="bi bi-trash-fill"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

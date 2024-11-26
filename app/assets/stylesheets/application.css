@@ -82,6 +82,14 @@
 
 
 /* ---main_view---- */
+.logout{
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -139,6 +147,7 @@
   background-color: #5a6268;
   /* ホバー時の色 */
 }
+
 .add-schedule-link {
   display: inline-block;
   text-decoration: none;

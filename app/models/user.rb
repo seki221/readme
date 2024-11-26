@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, length: { minimum: 2 }
+  has_many :schedules, dependent: :destroy
+
+  def own?(schedule)
+    self.id == schedule.user_id
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[user]
+  end
 end
