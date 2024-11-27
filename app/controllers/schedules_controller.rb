@@ -1,5 +1,4 @@
 class SchedulesController < ApplicationController
-  before_action :authorize_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -7,6 +6,15 @@ class SchedulesController < ApplicationController
       start_at_gteq: Time.zone.now.beginning_of_month,
       start_at_lteq: Time.zone.now.end_of_month
     }
+
+    if params[:date].present?
+      @schedules = Schedule.where(start_at: Date.parse(params[:date]).all_day)
+    else
+      @schedules = Schedule.all
+    end
+
+    @dates = (Date.today - 7..Date.today + 7).to_a
+    @schedules = Schedule.all # 必要なら他の条件で絞り込む
 
     @q = Schedule.ransack(params[:q])
     @schedules = @q.result(distinct: true).page(params[:page]).per(10)
@@ -17,12 +25,15 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = current_user.schedules.build(schedule_params)
     if @schedule.save
-      redirect_to schedules_path, notice: 'Schedule created successfully.'
+      redirect_to new_schedule_path, notice: 'Schedule created successfully.'
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @schedule = Schedule.find(params[:id])
   end
 
 private
