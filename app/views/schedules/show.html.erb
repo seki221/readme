@@ -3,12 +3,17 @@
     <div class="schedule list">
       <%# 左側 %>
       <div class="schedule-days">
-        <% @dates.each do |date| %>
-          <div class="day">
-            <%= link_to date.strftime('%Y年%m月%d日'), schedules_path(date: date), class: "date-link" %>
-          </div>
+        <% if @dates.present? %>
+          <% @dates.each do |date| %>
+            <div class="day">
+              <%= link_to date.strftime('%Y年%m月%d日'), schedules_path(date: date), class: "date-link" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>表示する日付がありません。</p>
         <% end %>
       </div>
+
       <%# 右側 %>
       <div class="schedule-show">
         <div class="day">
@@ -27,10 +32,10 @@
           <%= schedule.review.presence || "レビュー未記入" %>
         </div>
         <div class="actions">
-          <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
+          <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
           <i class="bi bi-pencil-fill"></i>
           <% end %>
-          <%= link_to board, id: "button-delete-#{board.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
+          <%= link_to schedule, id: "button-delete-#{schedule.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
           <i class="bi bi-trash-fill"></i>
           <% end %>
         </div>
