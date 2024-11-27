@@ -1,0 +1,50 @@
+<div class="show">
+  <div class="show schedule">
+    <div class="schedule list">
+      <%# 左側 %>
+      <div class="schedule-days">
+        <% @dates.each do |date| %>
+          <div class="day">
+            <%= link_to date.strftime('%Y年%m月%d日'), schedules_path(date: date), class: "date-link" %>
+          </div>
+        <% end %>
+      </div>
+      <%# 右側 %>
+      <div class="schedule-show">
+        <div class="day">
+          <h2><%= @selected_date.strftime('%Y年%m月%d日') if @selected_date %></h2>
+        </div>
+        <ul class="schedule-show-list">
+        <% @schedules.each do |schedule| %>
+        <li class="schedule-show-item">
+          <div class="time">
+            <%= schedule.start_at.strftime('%H:%M') %> ~ <%= schedule.end_at.strftime('%H:%M') %>
+          </div>
+        <div class="destination">
+            <%= schedule.destination %>
+        </div>
+        <div class="review">
+          <%= schedule.review.presence || "レビュー未記入" %>
+        </div>
+        <div class="actions">
+          <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
+          <i class="bi bi-pencil-fill"></i>
+          <% end %>
+          <%= link_to board, id: "button-delete-#{board.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
+          <i class="bi bi-trash-fill"></i>
+          <% end %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- フッター部分 -->
+  <div class="schedule-footer">
+    <div class="schedule-comment">
+      <%# comment %>
+    </div>
+    <div class="create-btn">
+      <%= link_to "スケジュール作成", new_schedule_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
