@@ -29,6 +29,11 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'bootsnap', '>= 1.4.4', require: false
+# gem 'bootstrap-modal-rails'
+# gem 'sidekiq'  
+# gem 'mini_magick'
+gem 'simple_form'
+gem 'country_select'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -44,11 +49,13 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
+# gem "dartsass-rails", "~> 0.4.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 gem 'ransack'
 
 group :development, :test do
@@ -57,6 +64,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'minitest', '~> 5.25'
   gem 'rdoc', '~> 6.8'
+  gem 'carrierwave', '~> 3.0'
+  
 end
 
 group :development do
@@ -86,3 +95,5 @@ end
 
 gem 'pg', group: :production
 gem 'devise', group: [:development, :test, :production]
+
+gem "webpacker", "~> 5.4"

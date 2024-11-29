@@ -7,10 +7,11 @@
           <%= f.search_field :destination_cont, class: 'form-control', placeholder: '目的地を検索' %>
         </div>
         <div class="m-3">
-          <%= f.date_field :start_at_gteq, class: 'form-control', placeholder: '開始日以降' %>
+          <p class="text-dark">開始日以降 </p>
         </div>
         <div class="m-3">
-          <%= f.date_field :start_at_gteq, class: 'form-control', placeholder: '開始日以降' %>
+          <%= f.date_field :start_at_gteq, class: 'form-control' %>
+        </div>
         </div>
         <div class="mb-3">
           <%= link_to '今月のスケジュール', schedules_path(q: { start_at_gteq: Time.zone.now.beginning_of_month, start_at_lteq: Time.zone.now.end_of_month }), class: 'btn btn-secondary' %>
@@ -28,10 +29,10 @@
           </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to 'ユーザー登録', class: 'nav-link' %>
+              <%= link_to 'ユーザー登録', new_user_registration_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログイン', class: 'nav-link' %>
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
             </li>
             <% end %>
       </ul>

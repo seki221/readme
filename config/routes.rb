@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, only: %i[new create index show]
+  devise_for :users
   root to: 'schedules#index'
   resources :schedules, only: %i[index new create show edit update destroy favorite] do
     resources :comments, only: %i[update create edit destroy], shallow: true

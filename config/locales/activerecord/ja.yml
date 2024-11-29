@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      schedule: スケジュール
+      comment: コメント
+    attributes:
+      user:
+        email: メールアドレス
+        nickname: ニックネーム
+        avatar: アバター
+        password: パスワード
+        password_confirmation: パスワード確認
+        role: 権限
+      schedule:
+        start_at
