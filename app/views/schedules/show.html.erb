@@ -1,6 +1,6 @@
-<div class="show">
-  <div class="show schedule">
-    <div class="schedule list">
+<div class="container">
+  <div class="schedule" >
+    <div class="schedule_list ">
       <%# 左側 %>
       <div class="schedule-days">
         <% if @dates.present? %>
@@ -19,30 +19,36 @@
         <div class="day">
           <h2><%= @selected_date.strftime('%Y年%m月%d日') if @selected_date %></h2>
         </div>
-        <ul class="schedule-show-list">
         <% @schedules.each do |schedule| %>
-        <li class="schedule-show-item">
-          <div class="time">
-            <%= schedule.start_at.strftime('%H:%M') %> ~ <%= schedule.end_at.strftime('%H:%M') %>
+          <div class="schedule-box">
+            <div class="schedule-box-parts">
+              <div class="time">
+                <%= schedule.start_at.strftime('%H:%M') %>
+                <br>~<br>
+                <%= schedule.end_at.strftime('%H:%M') %>
+              </div>
+              <div class="Noting-time">
+                <div class="destination">
+                  <%= schedule.destination %>
+                </div>|
+                <div class="review">
+                  <%= schedule.review.presence || "レビュー未記入" %>
+                </div>
+              </div>
+            </div>
           </div>
-        <div class="destination">
-            <%= schedule.destination %>
-        </div>
-        <div class="review">
-          <%= schedule.review.presence || "レビュー未記入" %>
-        </div>
-        <div class="actions">
-          <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
-          <i class="bi bi-pencil-fill"></i>
-          <% end %>
-          <%= link_to schedule, id: "button-delete-#{schedule.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
-          <i class="bi bi-trash-fill"></i>
-          <% end %>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-  </div>
+          <div class="actions">
+            <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+            <i class="bi bi-pencil-fill"></i>
+            <% end %>
+            <%= link_to schedule, id: "button-delete-#{schedule.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
+            <i class="bi bi-trash-fill"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+  <%# ---schedule--- %>
+
   <!-- フッター部分 -->
   <div class="schedule-footer">
     <div class="schedule-comment">

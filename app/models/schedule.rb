@@ -17,4 +17,10 @@ class Schedule < ApplicationRecord
     validates :start_time, presence: true, format: { with: /\A\d{2}:\d{2}\z/, message: "はHH:MM形式で入力してください" }
   end
 
+  def end_after_start
+    if end_at.present? && start_at.present? && end_at <= start_at
+      errors.add(:end_at, 'は開始日時より後である必要があります')
+    end
+  end
+
 end

@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
 
+before_action :correct_user, only: %i[edit update destroy]
 
   def index
     default_params = {
@@ -25,6 +26,10 @@ class SchedulesController < ApplicationController
   end
 
   def create
+    @schedule = current_user.schedules.build(schedule_params)
+    if @schedule.nil?
+      Rails.logger.error("Failed to initialize @schedule")
+    end
     if @schedule.save
       redirect_to new_schedule_path, notice: 'Schedule created successfully.'
     else
