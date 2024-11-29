@@ -47,6 +47,7 @@ gem 'country_select'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
+gem 'carrierwave', '~> 3.0'
 
 # Use Sass to process CSS
 gem "sassc-rails"
@@ -64,7 +65,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'minitest', '~> 5.25'
   gem 'rdoc', '~> 6.8'
-  gem 'carrierwave', '~> 3.0'
   
 end
 
