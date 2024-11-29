@@ -20151,3 +20151,321 @@ Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255
   
 ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
   
+Started GET "/schedules/new" for 192.168.65.1 at 2024-11-29 19:31:22 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/new.html.erb within layouts/application
+  Rendered schedules/new.html.erb within layouts/application (Duration: 28.3ms | Allocations: 2187)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 21.1ms | Allocations: 2075)
+  Rendered shared/_flash_message.html.erb (Duration: 1.5ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 141.4ms | Allocations: 15039)
+Completed 200 OK in 337ms (Views: 145.7ms | ActiveRecord: 51.9ms | Allocations: 20699)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:31:23 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started POST "/schedules" for 192.168.65.1 at 2024-11-29 19:32:34 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "schedule"=>{"destination"=>"サハラ砂漠", "start_at"=>"2025-02-13T19:32", "end_at"=>"2025-02-18T19:32", "cost"=>"200000", "review"=>""}, "commit"=>"next Schedule"}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/schedules_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/schedules_controller.rb:33:in `create'
+  [1m[36mSchedule Create (26.0ms)[0m  [1m[32mINSERT INTO "schedules" ("destination", "start_at", "end_at", "cost", "review", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["destination", "サハラ砂漠"], ["start_at", "2025-02-13 19:32:00"], ["end_at", "2025-02-18 19:32:00"], ["cost", 200000], ["review", ""], ["created_at", "2024-11-29 10:32:34.369294"], ["updated_at", "2024-11-29 10:32:34.369294"], ["user_id", 7]]
+  ↳ app/controllers/schedules_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/schedules_controller.rb:33:in `create'
+Redirected to http://localhost:3000/schedules/new
+Completed 302 Found in 111ms (ActiveRecord: 38.4ms | Allocations: 3568)
+
+
+Started GET "/schedules/new" for 192.168.65.1 at 2024-11-29 19:32:34 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/new.html.erb within layouts/application
+  Rendered schedules/new.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1511)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 5.7ms | Allocations: 1366)
+  Rendered shared/_flash_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 41.2ms | Allocations: 9269)
+Completed 200 OK in 45ms (Views: 43.5ms | ActiveRecord: 0.4ms | Allocations: 9699)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:32:34 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/" for 192.168.65.1 at 2024-11-29 19:32:44 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (3.7ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/schedules/index.html.erb:3
+  Rendered collection of schedules/_schedule.html.erb [10 times] (Duration: 14.9ms | Allocations: 18889)
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "schedules"."id") FROM "schedules"[0m
+  ↳ app/views/schedules/index.html.erb:5
+  Rendered schedules/index.html.erb within layouts/application (Duration: 58.2ms | Allocations: 24886)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 3.6ms | Allocations: 1590)
+  Rendered shared/_flash_message.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered layout layouts/application.html.erb (Duration: 83.6ms | Allocations: 33186)
+Completed 200 OK in 92ms (Views: 74.2ms | ActiveRecord: 12.7ms | Allocations: 33998)
+
+
+Started GET "/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:32:44 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/10" for 192.168.65.1 at 2024-11-29 19:32:54 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (2.1ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 7.6ms | Allocations: 2904)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 2.9ms | Allocations: 1364)
+  Rendered shared/_flash_message.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 52.5ms | Allocations: 10809)
+Completed 200 OK in 56ms (Views: 51.1ms | ActiveRecord: 2.6ms | Allocations: 11360)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:32:54 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/10" for 192.168.65.1 at 2024-11-29 19:34:28 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (1.9ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 42.0ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 14.2ms | Allocations: 1370)
+  Rendered shared/_flash_message.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 150.3ms | Allocations: 13686)
+Completed 200 OK in 174ms (Views: 148.6ms | ActiveRecord: 4.7ms | Allocations: 14080)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:34:28 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/10" for 192.168.65.1 at 2024-11-29 19:35:19 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (2.5ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 16.5ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 25.2ms | Allocations: 1364)
+  Rendered shared/_flash_message.html.erb (Duration: 0.2ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 139.6ms | Allocations: 13572)
+Completed 200 OK in 172ms (Views: 150.4ms | ActiveRecord: 7.7ms | Allocations: 13966)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:35:19 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/10" for 192.168.65.1 at 2024-11-29 19:35:35 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (2.1ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 12.5ms | Allocations: 1364)
+  Rendered shared/_flash_message.html.erb (Duration: 0.2ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 130.2ms | Allocations: 13575)
+Completed 200 OK in 163ms (Views: 130.3ms | ActiveRecord: 3.1ms | Allocations: 13969)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:35:35 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/10" for 192.168.65.1 at 2024-11-29 19:35:36 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 2.5ms | Allocations: 1366)
+  Rendered shared/_flash_message.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 10258)
+Completed 200 OK in 25ms (Views: 23.0ms | ActiveRecord: 1.0ms | Allocations: 10652)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:35:36 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/10" for 192.168.65.1 at 2024-11-29 19:36:02 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"10"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (1.9ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 16.0ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 29.3ms | Allocations: 1364)
+  Rendered shared/_flash_message.html.erb (Duration: 0.2ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 138.2ms | Allocations: 13596)
+Completed 200 OK in 151ms (Views: 136.8ms | ActiveRecord: 4.6ms | Allocations: 13990)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:36:02 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:36:08 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/edit" for 192.168.65.1 at 2024-11-29 19:39:45 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"edit"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (2.5ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 22.2ms | Allocations: 2341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 8.6ms | Allocations: 1365)
+  Rendered shared/_flash_message.html.erb (Duration: 0.2ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 87.6ms | Allocations: 10248)
+Completed 200 OK in 100ms (Views: 87.5ms | ActiveRecord: 3.2ms | Allocations: 10642)
+
+
+Started GET "/schedules/app/assets/stylesheets/application.css" for 192.168.65.1 at 2024-11-29 19:39:45 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/schedules/app/assets/stylesheets/application.css"):
+  
+Started GET "/schedules/edit" for 192.168.65.1 at 2024-11-29 20:00:01 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"edit"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (7.1ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 23.7ms | Allocations: 3244)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 17.3ms | Allocations: 1907)
+  Rendered shared/_flash_message.html.erb (Duration: 1.9ms | Allocations: 164)
+  Rendered layout layouts/application.html.erb (Duration: 137.6ms | Allocations: 16121)
+Completed 200 OK in 274ms (Views: 136.4ms | ActiveRecord: 59.5ms | Allocations: 21824)
+
+
+Started GET "/schedules/edit" for 192.168.65.1 at 2024-11-29 21:11:46 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"edit"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (7.7ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 27.7ms | Allocations: 3244)
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 15.2ms | Allocations: 1900)
+  Rendered shared/_flash_message.html.erb (Duration: 1.5ms | Allocations: 164)
+  Rendered layout layouts/application.html.erb (Duration: 84.1ms | Allocations: 13645)
+Completed 200 OK in 251ms (Views: 96.1ms | ActiveRecord: 60.8ms | Allocations: 19356)
+
+
+Started GET "/schedules/" for 192.168.65.1 at 2024-11-29 21:11:50 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Load (2.6ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/schedules/index.html.erb:3
+  Rendered collection of schedules/_schedule.html.erb [10 times] (Duration: 20.4ms | Allocations: 18874)
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT COUNT(DISTINCT "schedules"."id") FROM "schedules"[0m
+  ↳ app/views/schedules/index.html.erb:5
+  Rendered schedules/index.html.erb within layouts/application (Duration: 38.9ms | Allocations: 21270)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 4.7ms | Allocations: 1367)
+  Rendered shared/_flash_message.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 80.3ms | Allocations: 30165)
+Completed 200 OK in 87ms (Views: 74.2ms | ActiveRecord: 7.1ms | Allocations: 31014)
+
+
+Started GET "/schedules/1" for 192.168.65.1 at 2024-11-29 21:12:00 +0900
+Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by SchedulesController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/show.html.erb within layouts/application
+  [1m[36mSchedule Load (2.6ms)[0m  [1m[34mSELECT DISTINCT "schedules".* FROM "schedules"[0m
+  ↳ app/views/schedules/show.html.erb:22
+  Rendered schedules/show.html.erb within layouts/application (Duration: 42.0ms | Allocations: 2341)
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/shared/_header.html.erb:26
+  Rendered shared/_header.html.erb (Duration: 15.2ms | Allocations: 1364)
+  Rendered shared/_flash_message.html.erb (Duration: 0.2ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 79.7ms | Allocations: 11221)
+Completed 200 OK in 94ms (Views: 77.6ms | ActiveRecord: 5.5ms | Allocations: 11615)
+
+
