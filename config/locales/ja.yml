@@ -7,6 +7,7 @@ ja:
     delete_confirm: "削除しますか？"
     password_reset: "パスワードリセット"
     unspecified: "指定なし"
+    next: "次へ進む"
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
@@ -25,8 +26,11 @@ ja:
     field:
       title: "スケジュールを作成"
     new:
-      title: "スケジュールを作成"
+      title: "新規作成"
+      create: "作成する"
+      next: "次へ進む"
     show:
       title: "掲示板詳細"
     edit:
-      title: "掲示板編集"
+      title: "予定編集"
+      edit: "保存する"

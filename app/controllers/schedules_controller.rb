@@ -1,6 +1,5 @@
 class SchedulesController < ApplicationController
 
-before_action :correct_user, only: %i[edit update destroy]
 
   def index
     default_params = {
@@ -27,19 +26,46 @@ before_action :correct_user, only: %i[edit update destroy]
 
   def create
     @schedule = current_user.schedules.build(schedule_params)
-    if @schedule.nil?
-      Rails.logger.error("Failed to initialize @schedule")
-    end
-    if @schedule.save
-      redirect_to new_schedule_path, notice: 'Schedule created successfully.'
-    else
-      render :new, status: :unprocessable_entity
+    if params[:commit_create] # "スケジュールを作成" ボタンの処理
+      if @schedule.save
+        redirect_to schedules_path, notice: t('schedules.flash.created')
+      else
+        render :new, status: :unprocessable_entity
+      end
+    elsif params[:commit_next] # "次へ進む" ボタンの処理
+      if @schedule.save
+        redirect_to next_step_path(@schedule)
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
   def edit
     @schedule = Schedule.find(params[:id])
   end
+
+  def show
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def update
+        @schedule = current_user.schedules.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(@schedule), success: t('defaults.flash_message.updated', item: @schedule.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.flash_message.not_updated', item: @schedule.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
+  def destroy
+    schedule = current_user.schedules.find_by(id: params[:id])
+    schedule.destroy!
+    redirect_to schedules_path,success: t('defaults.flash_message.deleted', item: Schedule.model_name.human)
+  end
+
 
 private
 
