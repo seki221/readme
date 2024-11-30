@@ -1,43 +1,27 @@
-<div class="newschedule ml-50 mr-50">
-  <%= form_with model: @schedule, local: true do |form| %>
-    <% if @schedule.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
-        <ul>
-          <% @schedule.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <div class="field" >
       <div class="mb-3">
-      <%= form.text_field :destination , placeholder:"目的地"%>
+      <%= f.text_field :destination , placeholder:"目的地"%>
       </div>
       <div class="mb-3">
-      <%= form.label "開始日時" %><%= form.datetime_local_field :start_at%>
+      <%= f.label "開始日時" %><%= f.datetime_local_field :start_at%>
       </div>
       〜
       <div>
-      <%= form.label :終了日時 %>
-      <%= form.datetime_local_field :end_at%>
+      <%= f.label :終了日時 %>
+      <%= f.datetime_local_field :end_at%>
       </div>
       <div class="mb-3">
-      <%= form.label :経費 %>
-      <%= form.text_field :cost %>
+      <%= f.label :経費 %>
+      <%= f.text_field :cost %>
+      </div>
       </div>
       <div class="mb-3">
-      <%= form.label :評価 %>
-      <%= form.text_field :review %>
+        <%= f.label :transportation, '交通手段' %>
+        <%= f.select :transportation, [['車', 1], ['電車', 2], ['飛行機',3], ['その他', 4]], { include_blank: '選択してください'}, { class: "form-control" , required: true } %>
+      </div>
+      <div class="mb-3">
+      <%= f.label :評価 %>
+      <%= f.text_field :review %>
       </div>
     </div>
-
-
-    <div class="actions">
-      <%= form.submit t('.create'), class: "btn btn-primary" %>
-      <%= form.submit t('.next'), class: "btn btn-primary" %>
-    </div>
-
-  <% end %>
-</div>
