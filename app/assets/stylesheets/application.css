@@ -31,6 +31,20 @@
   text-align: center;
   margin-bottom: 20px;
 }
+#header{
+  height: 100px;
+}
+
+.nav-item{
+  display: flex;
+  flex-direction: row;
+}
+.nav-link{
+  color: #000;
+}
+p .text-dark{
+font-size: small;
+}
 
 /* 各フォーム要素のスタイル */
 .field {
@@ -39,12 +53,10 @@
 
 .form-control {
   width: 100%;
-  padding: 16px;
-  margin: 3% 0;
+  text-align: center;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 /* ボタンスタイル */
