@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   root to: 'schedules#index'
   resources :schedules, only: %i[index new create show edit update destroy favorite] do
     resources :comments, only: %i[update create edit destroy], shallow: true
