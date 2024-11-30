@@ -31,3 +31,35 @@
 
 en:
   hello: "Hello world"
+  defaults:
+    create: "作成"
+    edit: "編集"
+    show: "詳細"
+    delete: "削除"
+    delete_confirm: "削除しますか？"
+    password_reset: "パスワードリセット"
+    unspecified: "指定なし"
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+      require_login: "ログインしてください"
+      not_authorized: "権限がありません"
+      user_create:
+        success: "ユーザー登録が完了しました"
+        failure: "ユーザー登録に失敗しました"
+      user_information_update: "ユーザー情報を変更しました"
+  schedules:
+    index:
+      title: "掲示板一覧"
+    field:
+      create: "スケジュールを作成 "
+      next: "続けて作成"
+    new:
+      title: "新規スケジュール作成"
+    show:
+      title: "掲示板詳細"
+    edit:
+      title: "掲示板編集"

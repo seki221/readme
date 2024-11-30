@@ -9,14 +9,14 @@
         <%= link_to "#{schedule.start_at.strftime('%Y-%m-%d')} 〜 #{schedule.end_at.strftime('%Y-%m-%d')}".html_safe, schedule_path(schedule), class: 'text-primary' %>
       </p>
       <div class="d-flex">
-          <div class='ms-auto'>
-            <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
-              <i class="bi bi-pencil-fill"></i>
-            <% end %>
-            <%= link_to schedule,  id: "button-delete-#{schedule.id}", data: { turbo_method: "delete", turbo_confirm: "削除しますか？" } do %>
-              <i class="bi bi-trash-fill"></i>
-            <% end %>
-          </div>
+        <div class='ms-auto'>
+          <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+            <i class="bi bi-pencil-fill"></i>
+          <% end %>
+          <%= link_to schedule,  id: "button-delete-#{schedule.id}", data: { turbo_method: "delete", turbo_confirm: "削除しますか？" } do %>
+            <i class="bi bi-trash-fill"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

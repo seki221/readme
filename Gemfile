@@ -68,6 +68,8 @@ group :development, :test do
   
 end
 
+gem 'rails-i18n', '~> 7.0.0'
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
