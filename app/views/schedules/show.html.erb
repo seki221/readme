@@ -3,48 +3,50 @@
     <div class="schedule_list ">
       <%# 左側 %>
       <div class="schedule-days">
-        <% if @dates.present? %>
-          <% @dates.each do |date| %>
+        <% if @schedules_for_date.present? %>
+          <% @schedules_for_date.each do |schedule| %>
             <div class="day">
-              <%= link_to date.strftime('%Y年%m月%d日'), schedules_path(date: date), class: "date-link" %>
+              <h2><%= schedule.date.strftime('%Y年%m月%d日') %></h2>
+              <p><%= schedule.start_at.strftime('%H:%M') %> - <%= schedule.title %></p>
             </div>
           <% end %>
         <% else %>
-          <p>表示する日付がありません。</p>
+          <p>この日に予定はありません。</p>
         <% end %>
       </div>
 
       <%# 右側 %>
       <div class="schedule-show">
+        <% @schedules_for_start_at.each do |schedule| %>
+        
         <div class="day">
-          <h2><%= @selected_date.strftime('%Y年%m月%d日') if @selected_date %></h2>
+          <h2><%= @schedules_for_start_at.first.start_at.strftime('%Y-%m-%d') %></h2>
         </div>
-        <% @schedules.each do |schedule| %>
-          <div class="schedule-box">
-            <div class="schedule-box-parts">
-              <div class="time">
-                <%= schedule.start_at.strftime('%H:%M') %>
-                <br>~<br>
-                <%= schedule.end_at.strftime('%H:%M') %>
-              </div>
-              <div class="Noting-time">
-                <div class="destination">
-                  <%= schedule.destination %>
-                </div>|
-                <div class="review">
-                  <%= schedule.review.presence || "レビュー未記入" %>
-                </div>
+        <div class="schedule-box">
+          <div class="schedule-box-parts">
+            <div class="time">
+              <%= schedule.start_at.strftime('%H:%M') %>
+              <br>~<br>
+              <%= schedule.end_at.strftime('%H:%M') %>
+            </div>
+            <div class="Noting-time">
+              <div class="destination">
+                <%= schedule.destination %>
+              </div>|
+              <div class="review">
+                <%= schedule.review.presence || "レビュー未記入" %>
               </div>
             </div>
           </div>
-          <div class="actions">
-            <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
-            <i class="bi bi-pencil-fill"></i>
-            <% end %>
-            <%= link_to schedule, id: "button-delete-#{schedule.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
-            <i class="bi bi-trash-fill"></i>
-            <% end %>
-          </div>
+        </div>
+        <div class="actions">
+          <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+          <i class="bi bi-pencil-fill"></i>
+          <% end %>
+          <%= link_to schedule, id: "button-delete-#{schedule.id}" , data: { turbo_method: "delete" , turbo_confirm: "削除しますか？" } do %>
+          <i class="bi bi-trash-fill"></i>
+          <% end %>
+        </div>
         <% end %>
       </div>
   <%# ---schedule--- %>
