@@ -10,6 +10,12 @@ Rails.application.routes.draw do
       get :favorite
       get 'search'
     end
+    member do
+      get :next_step
+    end
   end
-  resources :favorite, only: %i[create destroy], shallow: true
+  
+
+  get '/dates/:date', to: 'dates#show', as: 'date_show'
+  # resources :favorite, only: %i[create destroy], shallow: true
 end

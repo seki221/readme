@@ -1,4 +1,4 @@
-<% @schedules.each do |schedule| %>
+
 <div class="col-sm-12 col-lg-4 mb-3">
   <%= link_to schedule_path(schedule), class: "text-decoration-none" do %>
     <div class="card" style="width:300px ;">
@@ -8,7 +8,7 @@
       <div class= "card-body">
         <p class="card-text">
           <%= schedule.destination %><br>
-          <%= link_to "#{schedule.start_at.strftime('%Y-%m-%d')} 〜 #{schedule.end_at.strftime('%Y-%m-%d')}".html_safe, schedule_path(schedule), class: 'text-primary' %>
+          <%= link_to schedule.date, date_show_path(date: schedule.start_at.to_date) %>
         </p>
         <div class="d-flex">
           <div class='ms-auto'>
@@ -24,4 +24,5 @@
     <% end %>
   </div>
 </div>
-<% end %>
+<%# <% @schedules_for_date.each do |schedule| %>
+<%# <% end %>
