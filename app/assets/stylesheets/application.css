@@ -1,5 +1,31 @@
-/* --- first_page----- */
 /* コンテナ全体のスタイル */
+@media (min-width: 1200px) {
+  html{
+    width: max1200px;
+    font-size: 100%;
+  }
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+@media (min-width: 460px) {
+  html {
+    width: max400px;
+      font-size: 100%;
+    }
+  
+    .container {
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .schedule-days {
+      display: none
+    }
+}
+/* --- first_page----- */
 .devise-container {
   display: flex;
   justify-content: center;
@@ -27,7 +53,8 @@
 
 /* タイトルスタイル */
 .devise-title {
-  font-size: 24px;
+  font-size: 1.5rem;
+  /* 24px */
   text-align: center;
   margin-bottom: 20px;
 }
@@ -60,12 +87,12 @@ font-size: small;
 }
 
 /* ボタンスタイル */
-.btn {
-  padding: 10px 0;
+.actions .btn {
+  /* padding: 10px 0; */
   font-size: 16px;
-  font-weight: bold;
+  /* font-weight: bold; */
   border: none;
-  border-radius: 4px;
+  border-radius: 16px;
   cursor: pointer;
   display: block;
   width: 100%;
@@ -99,11 +126,7 @@ font-size: small;
 }
 
 /* ---main_view---- */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
+
 
 .card-grid {
   display: flex;
@@ -153,11 +176,7 @@ font-size: small;
   margin: 20em 10em;
   }
 
-@media screen and (max-width: 460px) {
-  .schedule-days {
-    display: none
-  }
-}
+
 .schedule-show{
 margin: 0 8vw;
 }
@@ -189,4 +208,9 @@ margin: 0 8vw;
     bottom: 0;
 }
 
-/* new */
+/* new (edit)*/
+.mb-3 label{
+  font-size: .8rem;
+  padding: 5px;
+  color: #000;
+}
