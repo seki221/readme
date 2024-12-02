@@ -1,24 +1,41 @@
 
     <div class="field" >
       <div class="mb-3">
-      <%= f.text_field :destination , placeholder:"目的地"%>
+        <%= f.text_field :destination , placeholder:"目的地"%>
       </div>
-      <div class="mb-3">
-      <%= f.label "開始日時" %><%= f.datetime_local_field :start_at%>
-      </div>
-      〜
-      <div>
-      <%= f.label :終了日時 %>
-      <%= f.datetime_local_field :end_at%>
-      </div>
-      <div class="mb-3">
-      <%= f.label :経費 %>
-      <%= f.text_field :cost %>
-      </div>
+      <div class="mb-3 pl-3 d-flex">
+        <div class="mb-3">
+          <%= f.label "開始" %>
+          <%= f.datetime_local_field :schedules_for_start_at%>
+        </div>
+        <div class="dw"　>
+        >>
+        </div>
+        <div class="mb-3">
+          <%= f.label :終了 %>
+          <%= f.datetime_local_field :end_at%>
+        </div>
+      </div>  
+      <div class="mb-3">  
+        <%= f.label :経費 %>
+        <%= f.text_field :cost %>
       </div>
       <div class="mb-3">
         <%= f.label :transportation, '交通手段' %>
-        <%= f.select :transportation, [['車', 1], ['電車', 2], ['飛行機',3], ['その他', 4]], { include_blank: '選択してください'}, { class: "form-control" , required: true } %>
+        <select name="transportation[]" multiple>
+          <label><input type="checkbox" name="transportation[]" value="car"> Car</label>
+          <label><input type="checkbox" name="transportation[]" value="train"> Train</label>
+          <label><input type="checkbox" name="transportation[]" value="bus"> Bus</label>
+        </select>
+
+      </div>
+      <div class="mb-3">
+        <%= f.label :場所＊ %>
+        <%= f.text_field :place %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :地点説明＊ %>
+        <%= f.text_field :guaid %>
       </div>
       <div class="mb-3">
       <%= f.label :評価 %>
