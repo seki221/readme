@@ -23,17 +23,6 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new
   end
 
-  # def create
-  #   @schedule = current_user.schedules.build(schedule_params)
-  #   if params[:commit_create] # "スケジュールを作成" ボタンの処理
-  #     if @schedule.save
-  #       redirect_to schedules_path, notice: t('schedules.flash.created')
-  #     else
-  #       render :new, status: :unprocessable_entity
-  #     end
-  #   end
-  # end
-
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.date = @schedule.start_at.to_date if @schedule.start_at.present?
@@ -66,27 +55,6 @@ class SchedulesController < ApplicationController
     @schedules_for_date = Schedule.where(date: @schedule.date).order(:start_at)
   end
 
-  # def show
-  #   @schedule = Schedule.find_by(id: params[:id])
-  #   if @schedule.nil?
-  #     Rails.logger.error "Schedule with ID #{params[:id]} not found."
-  #   else
-  #     Rails.logger.info "Found schedule: #{@schedule.inspect}"
-  #     @schedules_for_date = Schedule.where(date: @schedule.date).order(:start_at)
-  #     Rails.logger.info "Schedules for date: #{@schedules_for_date.inspect}"
-  #   end
-  # end
-
-  # def update
-  #       @schedule = current_user.schedules.find(params[:id])
-  #   if @schedule.update(schedule_params)
-  #     redirect_to schedule_path(@schedule), success: t('defaults.flash_message.updated', item: @schedule.model_name.human)
-  #   else
-  #     flash.now[:danger] = t('defaults.flash_message.not_updated', item: @schedule.model_name.human)
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
-
   def update
     @schedule = Schedule.find(params[:id])
     @schedule.assign_attributes(schedule_params)
@@ -109,7 +77,7 @@ class SchedulesController < ApplicationController
 private
 
   def schedule_params
-    params.require(:schedule).permit(:destination, :start_at, :end_at, :cost, :review, :transportation, :position, :schedule_image, :schedule_image_cache)
+    params.require(:schedule).permit(:destination, :start_at, :end_at, :cost, :review, :transportation, :position, :schedule_image, :schedule_image_cache).merge(user_id:current_user.id)
   end
 
   
