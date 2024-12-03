@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_23_184335) do
+ActiveRecord::Schema.define(version: 2024_12_02_011921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "schedules", force: :cascade do |t|
     t.string "destination"
@@ -27,6 +34,9 @@ ActiveRecord::Schema.define(version: 2024_11_23_184335) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.string "image_url"
+    t.date "date"
+    t.string "place"
+    t.text "guaid"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 

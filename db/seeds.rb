@@ -7,7 +7,7 @@ puts 'finish create users ...'
 
 # スケジュールを作成
 puts 'start create schedules ...'
-schedules = 3.times.map do
+schedules = 1.times.map do
   FactoryBot.create(:schedule, user: users.sample, image_url: "https://via.placeholder.com/250*150")
 end
 puts 'finish create schedules ...'

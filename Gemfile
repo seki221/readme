@@ -31,9 +31,10 @@ gem "jbuilder"
 gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'bootstrap-modal-rails'
 # gem 'sidekiq'  
-# gem 'mini_magick'
 gem 'simple_form'
 gem 'country_select'
+# gem 'mini_magick'
+# gem 'ssrf_filter', '~> 1.2'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -54,7 +55,7 @@ gem "sassc-rails"
 # gem "dartsass-rails", "~> 0.4.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
 gem 'ransack'

@@ -358,6 +358,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fullcalendar-rails
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   kaminari
