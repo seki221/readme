@@ -245,24 +245,29 @@ margin: 0 8vw;
 
 .close {
   position: absolute;
+  z-index: 2;
   top: 20px;
   right: 20px;
-  font-size: 24px;
-  color: black;
-  text-decoration: none;
   cursor: pointer;
-  transform: translate(50%, -50%);
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: white;
+  background-color: #59a5f6;
+  font-size: 24px;
+  /* text-decoration: none; */
+  /* transform: translate(50%, -50%); */
+  /* border: none; */
 }
 
 .modal-wrapper {
   position: relative;
   width: 80%;
-  max-width: 500px;
+  max-width: 80%;
   max-height: 70%;
   padding: 20px;
   margin: auto;
   overflow: scroll;
-  background-color: #FEFEFE;
+  background-color: lemonchiffon;
   border-radius: 5px;
 }
 
