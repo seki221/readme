@@ -1,6 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :user
-  validates :destination, presence: true
+
   validates :start_at, presence: true
   validates :end_at, presence: true
   validate :end_after_start
@@ -13,9 +13,6 @@ class Schedule < ApplicationRecord
     %w[destination start_at end_at cost review transportation]
   end
 
-  class Schedule < ApplicationRecord
-    validates :start_time, presence: true, format: { with: /\A\d{2}:\d{2}\z/, message: "はHH:MM形式で入力してください" }
-  end
 
   def end_after_start
     if end_at.present? && start_at.present? && end_at <= start_at
