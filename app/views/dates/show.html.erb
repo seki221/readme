@@ -17,8 +17,19 @@
               <div class="destination">
                 <%= schedule.destination %>
               </div>|
-              <div class="review">
-                <%= schedule.review.presence || "レビュー未記入" %>
+              <div class="reviews">
+                <% if schedule.reviews.any? %>
+                  <% schedule.reviews.each do |review| %>
+                  <div class="arrow_box">
+                    <div class="review">
+                      <%= review.rating %></p>
+                      <p><%= review.body %></p>
+                    </div>
+                  </div>
+                  <% end %>
+                <% else %>
+                  <p>レビューがまだありません。</p>
+                <% end %>
               </div>
             </div>
             <div class="actions">
@@ -26,6 +37,7 @@
                 <i class="bi bi-pencil-fill"></i>
               <% end %>
               <%= link_to schedule, id: "button-delete-#{schedule.id}", data: { turbo_method: "delete", turbo_confirm: "削除しますか？" } do %>
+              
                 <i class="bi bi-trash-fill"></i>
               <% end %>
               <%= render 'dates/review'%>

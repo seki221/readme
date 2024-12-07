@@ -22,6 +22,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:body) # 必要に応じてフィールドを追加
+    params.require(:review).permit(:body,:rating)
   end
 end
