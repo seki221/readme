@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :user
+  has_many :reviews, dependent: :destroy
 
   validates :start_at, presence: true
   validates :end_at, presence: true

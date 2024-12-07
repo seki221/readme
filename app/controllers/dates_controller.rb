@@ -8,6 +8,8 @@ class DatesController < ApplicationController
 
     @schedules_for_start_at = Schedule.where(date: @date).order(:start_at)
     @dates = Schedule.distinct.pluck(:date).compact
+    
+    @schedule = Schedule.find_by(start_at: params[:date])
   end
 
   private
