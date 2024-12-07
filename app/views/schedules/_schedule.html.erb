@@ -1,28 +1,28 @@
-
 <div class="col-sm-12 col-lg-4 mb-3">
   <%= link_to date_show_path(date: schedule.start_at.to_date), class: "text-decoration-none" do %>
-    <div class="card" style="width:300px ;">
+    <div class="card" style="width:300px;">
       <svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="object-fit-cover border rounded">
-      <rect width="300" height="200" fill="#D9D9D9"/>
+        <rect width="300" height="200" fill="#D9D9D9" />
       </svg>
-      <div class= "card-body">
+      <div class="card-body">
         <p class="card-text">
           <%= schedule.destination %><br>
-          <%= link_to schedule.date, date_show_path(date: schedule.start_at.to_date) %>
+          <%= link_to schedule.start_at.to_date, date_show_path(date: schedule.start_at.to_date) %>
         </p>
         <div class="d-flex">
-          <div class='ms-auto'>
-            <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule}" do %>
-              <i class="bi bi-pencil-fill"></i>            
+          <div class="ms-auto">
+            <%= link_to edit_schedule_path(schedule), id: "button-edit-#{schedule.id}" do %>
+              <i class="bi bi-pencil-fill"></i>
             <% end %>
-            <%= link_to schedule_path(schedule), id: "button-destroy-#{schedule}", data: { turbo_method: "delete", turbo_confirm: "削除しますか？" } do %>
+            <%= link_to schedule_path(schedule),
+                        method: :delete,
+                        data: { confirm: "削除しますか？" },
+                        id: "button-destroy-#{schedule.id}" do %>
               <i class="bi bi-trash-fill"></i>
             <% end %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
-<%# <% @schedules_for_date.each do |schedule| %>
-<%# <% end %>
