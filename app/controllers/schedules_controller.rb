@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create index show edit update destroy]
+  before_action :move_to_signed_in, except: [:index]
   def index
     default_params = {
       start_at_gteq: Time.zone.now.beginning_of_month,
@@ -11,8 +13,7 @@ class SchedulesController < ApplicationController
     else
       @schedules_for_date = Schedule.all.order(:start_at)
     end
-    @schedules = Schedule.all.order(:start_at).group_by.count { |schedule| schedule.date }
-
+    Schedule.group(:start_at){ |schedule| schedule.date }
     @dates = (Date.today - 7..Date.today + 7).to_a
 
     @q = Schedule.ransack(params[:q])
@@ -24,9 +25,8 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
-    @schedule.date = @schedule.start_at.to_date if @schedule.start_at.present?
-
+    @schedule = current_user.schedules.build(schedule_params)
+    @schedule.date = @schedule.start_at.to_date
     if @schedule.save
       redirect_to schedules_path, notice: 'スケジュールが作成されました。'
     else
@@ -68,9 +68,9 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    schedule = current_user.schedules.find_by(id: params[:id])
+    schedule = current_user.schedules.find_by(params[:id])
     schedule.destroy!
-    redirect_to schedules_path,success: t('defaults.flash_message.deleted', item: Schedule.model_name.human)
+    redirect_to root_path, success: t('defaults.flash_message.deleted', item: Schedule.model_name.human)
   end
 
 
@@ -89,6 +89,13 @@ private
     schedule = Schedule.find(params[:id])
     unless current_user.own?(schedule)
       redirect_to schedules_path, alert: "You are not authorized to perform this action."
+    end
+  end
+
+  def move_to_signed_in
+    unless user_signed_in?
+      #サインインしていないユーザーはログインページが表示される
+      redirect_to  '/users/sign_in'
     end
   end
 end
