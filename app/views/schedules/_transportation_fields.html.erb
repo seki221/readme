@@ -1,0 +1,19 @@
+<%= f.collection_check_boxes :transportation_ids, Transportation.all, :id, :category do |cb| %>
+  <div>
+    <%= cb.check_box %>
+    <%= cb.text %>
+  </div>
+  <input type="checkbox" value="1" name="transportation[hobby_ids][]" id="transportation_ids_1">
+  <label for="transportation_ids_1">電車</label>
+
+  <input type="checkbox" value="2" name="transportation[hobby_ids][]" id="transportation_ids_2">
+  <label for="transportation_ids_2">車</label>
+
+    
+<% end %>
+
+<div>
+  <label>その他</label>
+  <%= check_box_tag 'schedule[other_transportation]', '1' %>
+  <%= text_field_tag 'schedule[other_transportation_name]', nil, placeholder: 'その他の交通手段' %>
+</div>

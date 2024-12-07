@@ -1,6 +1,8 @@
 class Schedule < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
+  has_many :schedule_transportations, dependent: :destroy
+  has_many :transportations, through: :schedule_transportations
 
   validates :start_at, presence: true
   validates :end_at, presence: true
@@ -11,7 +13,7 @@ class Schedule < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[destination start_at end_at cost review transportation]
+    %w[destination start_at end_at cost review transportations]
   end
 
 

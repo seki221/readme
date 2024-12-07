@@ -5,30 +5,22 @@
       </div>
       <div class="mb-3 pl-3 d-flex">
         <div class="mb-3">
-          <%= f.label "開始" %>
+          <%= f.label :start_at, '開始' %>
           <%= f.datetime_local_field :start_at%>
         </div>
-        <div class="dw"　>
+        <div class="dw">
         >>
         </div>
         <div class="mb-3">
-          <%= f.label :終了 %>
+          <%= f.label :end_at, '終了' %>
           <%= f.datetime_local_field :end_at%>
         </div>
-      </div>  
+      </div>
       <div class="mb-3">  
         <%= f.label :経費 %>
         <%= f.text_field :cost %>
       </div>
-      <div class="mb-3">
-        <%= f.label :transportation, '交通手段' %>
-        <select name="transportation[]" multiple>
-          <label><input type="checkbox" name="transportation[]" value="car"> Car</label>
-          <label><input type="checkbox" name="transportation[]" value="train"> Train</label>
-          <label><input type="checkbox" name="transportation[]" value="bus"> Bus</label>
-          </select>
-
-      </div>
+      <%= render 'transportation_fields', f: f %>
       <div class="mb-3">
         <%= f.label :場所＊ %>
         <%= f.text_field :place %>
@@ -36,9 +28,5 @@
       <div class="mb-3">
         <%= f.label :地点説明＊ %>
         <%= f.text_field :guaid %>
-      </div>
-      <div class="mb-3">
-      <%= f.label :評価 %>
-      <%= f.text_field :review %>
       </div>
     </div>
