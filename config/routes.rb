@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :favorite
       get 'search'
     end
+    resources :reviews, only: :create
     member do
       get :next_step
     end
@@ -17,5 +18,6 @@ Rails.application.routes.draw do
   
 
   get '/dates/:date', to: 'dates#show', as: 'date_show'
+
   # resources :favorite, only: %i[create destroy], shallow: true
 end
