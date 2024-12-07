@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_12_02_011921) do
+ActiveRecord::Schema.define(version: 2024_12_07_091227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2024_12_02_011921) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "schedule_id"
+    t.index ["schedule_id"], name: "index_reviews_on_schedule_id"
+  end
+
+  create_table "schedule_transportations", force: :cascade do |t|
+    t.bigint "schedule_id", null: false
+    t.bigint "transportation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_schedule_transportations_on_schedule_id"
+    t.index ["transportation_id"], name: "index_schedule_transportations_on_transportation_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -40,6 +51,14 @@ ActiveRecord::Schema.define(version: 2024_12_02_011921) do
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
+  create_table "transportations", force: :cascade do |t|
+    t.string "category"
+    t.bigint "schedule_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_transportations_on_schedule_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nickname"
     t.string "email", default: "", null: false
@@ -53,5 +72,8 @@ ActiveRecord::Schema.define(version: 2024_12_02_011921) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "schedule_transportations", "schedules"
+  add_foreign_key "schedule_transportations", "transportations"
   add_foreign_key "schedules", "users"
+  add_foreign_key "transportations", "schedules"
 end
