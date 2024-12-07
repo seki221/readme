@@ -31,42 +31,9 @@
   }
 
 }
-/* --- first_page----- */
-.devise-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100%; */
-  background-color: #f8f9fa;
-  padding: 20px;
-  box-sizing: border-box;
-}
 
 /* フォーム全体のラッパー */
-.devise-wrapper {
-  width: 100%;
-  max-width: 400px;
-  /* max-height: 433px; */
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 30px;
-  margin-bottom: 10%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
 
-/* タイトルスタイル */
-.devise-title {
-  font-size: 1.5rem;
-  /* 24px */
-  text-align: center;
-  margin-bottom: 20px;
-}
-#header{
-  height: 100px;
-}
 
 .nav-item{
   display: flex;
@@ -203,15 +170,14 @@ margin: 0 8vw;
   flex-direction: row;
 }
 .schedule-footer{
-    /* width: 100%; */
-    /* background-color: #89c7de; */
-    color: #fff;
-    /* text-align: center; */
-    padding: 30px 0;
-  
-    position:absolute;
-    /*←絶対位置*/
-    bottom: 0;
+  color: #fff;
+  padding: 30px 0;
+  position:absolute;
+  /*←絶対位置*/
+  bottom: 0;
+  /* width: 100%; */
+  /* background-color: #89c7de; */
+  /* text-align: center; */
 }
 
 /* new (edit)*/
@@ -272,7 +238,7 @@ margin: 0 8vw;
   padding: 20px;
   margin: auto;
   overflow: scroll;
-  background-color: lemonchiffon;
+  background-color: rgb(69, 115, 255);
   border-radius: 5px;
 }
 
@@ -281,4 +247,57 @@ margin: 0 8vw;
   font-size: 4rem;
   line-height: 1.2em;
   letter-spacing: -0.02em;
+}
+
+/* レビューの星 */
+.stars {
+  direction: rtl;
+  /* 右から並べたい場合 */
+  display: inline-block;
+}
+
+.stars input[type='radio'] {
+  display: none;
+  /* ラジオボタンを非表示 */
+}
+
+.stars label {
+  font-size: 30px;
+  color: #D2D2D2;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.stars label:hover,
+.stars label:hover~label,
+.stars input[type='radio']:checked~label {
+  color: #F8C601;
+}
+.arrow_box {
+  position: relative;
+  background: rgb(69, 115, 255);
+  margin-bottom: 5px;
+  color: #fff;
+  margin-left: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.arrow_box:after,
+.arrow_box:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(109, 157, 213, 0);
+  border-right-color: rgb(69, 115, 255);
+  border-width: 20px;
+  margin-top: -20px;
 }
