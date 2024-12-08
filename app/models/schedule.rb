@@ -3,6 +3,7 @@ class Schedule < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :schedule_transportations, dependent: :destroy
   has_many :transportations, through: :schedule_transportations
+  has_many :favorites, dependent: :destroy
 
   validates :start_at, presence: true
   validates :end_at, presence: true

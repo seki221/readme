@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, length: { minimum: 2 }
+
   has_many :schedules, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_schedules, through: :favorites, source: :schedule
 
   def own?(schedule)
     self.id == schedule.user_id
