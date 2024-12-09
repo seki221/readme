@@ -19,5 +19,5 @@ Rails.application.routes.draw do
 
   get '/dates/:date', to: 'dates#show', as: 'date_show'
 
-  # resources :favorite, only: %i[create destroy], shallow: true
+  resources :favorite, only: %i[create destroy], shallow: true
 end
