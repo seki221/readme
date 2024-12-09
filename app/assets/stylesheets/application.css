@@ -133,9 +133,7 @@ font-size: small;
   margin-top: 1rem;
   max-width: 31rem;
 }
-.schedule{
-  padding: 0;
-}
+
 
 .form-control {
   width: 100%;
@@ -347,8 +345,7 @@ margin: 0 8vw;
   display: inline-block;
 }
 .review-before::before{
-content: '||' ;
-
+  content: '||' ;
 }
 .stars label:hover,
 .stars label:hover~label,
