@@ -2,21 +2,23 @@ class SchedulesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create index show edit update destroy]
   before_action :move_to_signed_in, except: [:index]
   def index
+    # デフォルトのransack条件
     default_params = {
       start_at_gteq: Time.zone.now.beginning_of_month,
       start_at_lteq: Time.zone.now.end_of_month
     }
-    if params[:date].present?
-      selected_date = Date.parse(params[:date])
-      @schedules_for_date = Schedule.where(date: selected_date).order(:start_at)
-      @selected_date = selected_date
-    else
-      @schedules_for_date = Schedule.all.order(:start_at)
-    end
-    Schedule.group(:start_at){ |schedule| schedule.date }
+
+    # 日付ごとにスケジュールをグループ化して件数をカウント
+    @schedule_counts = Schedule
+      .select("DATE(start_at) AS grouped_date, COUNT(*) AS schedule_count")
+      .group("DATE(start_at)")
+      .order("grouped_date")
+      .map { |schedule| [schedule.grouped_date, schedule.schedule_count] }
+      .to_h
+
     @dates = (Date.today - 7..Date.today + 7).to_a
 
-    @q = Schedule.ransack(params[:q])
+    @q = Schedule.ransack(params[:q] || default_params)
     @schedules = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
@@ -48,6 +50,7 @@ class SchedulesController < ApplicationController
 
   def edit
     @schedule = Schedule.find(params[:id])
+
   end
 
   def show
@@ -61,17 +64,24 @@ class SchedulesController < ApplicationController
     @schedule.date = @schedule.start_at.to_date if @schedule.start_at.present?
 
     if @schedule.save
-      redirect_to schedule_path(@schedule), notice: 'スケジュールが更新されました。'
+      redirect_to date_show_path(date: @schedule.start_at.to_date), notice: 'スケジュールが更新されました。'
+      
     else
       render :edit
     end
   end
 
   def destroy
-    schedule = current_user.schedules.find_by(params[:id])
-    schedule.destroy!
-    redirect_to root_path, success: t('defaults.flash_message.deleted', item: Schedule.model_name.human)
+    schedule = current_user.schedules.find(params[:id])
+    if schedule.destroy
+      redirect_to date_show_path(date: schedule.start_at.to_date), notice: 'スケジュールを削除しました。'
+    else
+      redirect_to schedules_path, alert: 'スケジュールの削除に失敗しました。'
+    end
   end
+
+
+
 
 
 private
