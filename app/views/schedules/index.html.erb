@@ -1,18 +1,15 @@
 <div class="container card-grid mb-5 pt-2">
   <div class="row">
     <% if @schedules.present? %>
-      <%= render @schedules %>
+      <%= render @schedules  %>
       <%= paginate @schedules %>
-      
     <% else %>
       <div class="col-12">
         <p>スケジュールがありません</p>
       </div>
     <% end %>
   </div>
-
 </div>
-
 <div class="add-schedule-button">
   <div class="fixed-action-btn">
     <a href="/schedules/new" class="add-schedule-link btn-floating btn-large red">

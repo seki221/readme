@@ -10,11 +10,11 @@ class SchedulesController < ApplicationController
 
     # 日付ごとにスケジュールをグループ化して件数をカウント
     @schedule_counts = Schedule
-      .select("DATE(start_at) AS grouped_date, COUNT(*) AS schedule_count")
+      .select("DATE(start_at) AS grouped_date, COUNT(*) AS schedule_count").distinct
       .group("DATE(start_at)")
       .order("grouped_date")
       .map { |schedule| [schedule.grouped_date, schedule.schedule_count] }
-      .to_h
+      # .to_h
 
     @dates = (Date.today - 7..Date.today + 7).to_a
 

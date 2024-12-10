@@ -10,8 +10,8 @@ Rails.application.routes.draw do
       get :favorite
       get 'search'
     end
-    resources :reviews, only: :create
-    member do
+    resources :reviews, only: [:create]
+        member do
       get :next_step
     end
   end
