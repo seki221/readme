@@ -1,2 +1,17 @@
-@import 'bootstrap/dist/css/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@use "bootstrap/dist/css/bootstrap";
+@use "bootstrap-icons/font/bootstrap-icons";
+
+@media screen and (max-width: 460px) {
+  html {
+    width: max400px;
+    font-size: 100%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .schedule {
+    padding: 0;
+  }
+}
