@@ -1,8 +1,8 @@
 <div class="container card-grid mb-5 pt-2">
   <div class="row">
-    <% if @schedules.present? %>
-      <%= render @schedules  %>
-      <%= paginate @schedules %>
+    <% if @bookmark_schedules.present? %>
+      <%= render @bookmark_schedules %>
+      <%= paginate @bookmark_schedules %>
     <% else %>
       <div class="col-12">
         <p>スケジュールがありません</p>
