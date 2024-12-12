@@ -28,7 +28,7 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = current_user.schedules.build(schedule_params)
-    @schedule.date = @schedule.start_at.to_date
+    @schedule.date = @schedule.start_at.to_date if @schedule.start_at.present?
     if @schedule.save
       redirect_to schedules_path, notice: 'スケジュールが作成されました。'
     else
@@ -37,7 +37,7 @@ class SchedulesController < ApplicationController
   end
 
   def next_step
-    @schedule = Schedule.find(params[:id])
+    @schedule = current_user.schedules.build(schedule_params)
     # 次のステップのロジックをここに記述
     if params[:commit_next] # "次へ進む" ボタンの処理
       if @schedule.save
@@ -72,12 +72,10 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    schedule = current_user.schedules.find(params[:id])
-    if schedule.destroy
-      redirect_to date_show_path(date: schedule.start_at.to_date), notice: 'スケジュールを削除しました。'
-    else
-      redirect_to schedules_path, alert: 'スケジュールの削除に失敗しました。'
-    end
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    flash[:notice_destroy] = "スケジュールを削除しました"
+    redirect_to :date
   end
 
 
