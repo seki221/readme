@@ -1,16 +1,16 @@
 <% @schedule_counts.each do |date, count| %>
-    <div class="col-sm-12 col-lg-4 mb-3">
-      <div class="card">
-        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 16C0 7.16344 7.16344 0 16 0H284C292.837 0 300 7.16344 300 16V200H0V16Z" fill="#D9D9D9"/>
-        </svg>
-        <div class="card-body">
-          <h5 class="card-title"><%= date %></h5>
-          <p class="card-text">
-            <%= count %> 件の予定があります。
-          </p>
-          <%= link_to '詳細を見る', date_show_path(date: date), class: "btn btn-primary" %>
-        </div>
+  <div class="col-sm-12 col-lg-4 mb-3">
+    <div class="card">
+      <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 16C0 7.16344 7.16344 0 16 0H284C292.837 0 300 7.16344 300 16V200H0V16Z" fill="#D9D9D9"/>
+      </svg>
+      <div class="card-body">
+        <h5 class="card-title"><%= date %></h5>
+        <p class="card-text">
+          <%= count %> 件の予定があります。
+        </p>
+        <%= link_to '詳細を見る', date_show_path(date: date), class: "btn btn-primary" %>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
