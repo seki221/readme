@@ -5,18 +5,18 @@ Rails.application.routes.draw do
   end
   root to: 'schedules#index'
   resources :schedules, only: %i[index new create show edit update destroy] do
-    resources :comments, only: %i[update create edit destroy], shallow: true
-    collection do
-      get :favorite
-      get 'search'
-    end
-    resources :reviews, only: [:create]
-        member do
+    # resources :comments, only: %i[update create edit destroy], shallow: true
+      collection do
+        get :favorite
+        get 'search'
+      end
+    resources :reviews, only: %i[new create]
+    member do
       get :next_step
     end
   end
   
-
+  
   get '/dates/:date', to: 'dates#show', as: 'date_show'
 
   resources :favorite, only: %i[create destroy], shallow: true
