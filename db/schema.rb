@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_12_08_042946) do
+ActiveRecord::Schema.define(version: 2024_12_13_141343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 2024_12_08_042946) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["schedule_id"], name: "index_favorites_on_schedule_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "planners", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "planners_schedules", force: :cascade do |t|
+    t.bigint "planner_id", null: false
+    t.bigint "schedule_id", null: false
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["planner_id", "schedule_id"], name: "index_planners_schedules_on_planner_id_and_schedule_id", unique: true
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -54,9 +69,10 @@ ActiveRecord::Schema.define(version: 2024_12_08_042946) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.string "image_url"
-    t.date "date"
     t.string "place"
     t.text "guaid"
+    t.bigint "planner_id"
+    t.index ["planner_id"], name: "index_schedules_on_planner_id"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -83,8 +99,11 @@ ActiveRecord::Schema.define(version: 2024_12_08_042946) do
 
   add_foreign_key "favorites", "schedules"
   add_foreign_key "favorites", "users"
+  add_foreign_key "planners_schedules", "planners"
+  add_foreign_key "planners_schedules", "schedules"
   add_foreign_key "schedule_transportations", "schedules"
   add_foreign_key "schedule_transportations", "transportations"
+  add_foreign_key "schedules", "planners"
   add_foreign_key "schedules", "users"
   add_foreign_key "transportations", "schedules"
 end
