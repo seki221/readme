@@ -37,7 +37,7 @@
                 <i class="bi bi-pencil-fill"></i>
               <% end %>
               
-              <%= link_to root_path(schedule), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "button-delete-#{schedule.id}" do %>
+              <%= link_to date_show_path(schedule), method: :delete, data: { confirm: '本当に削除しますか？' }, id: "button-delete-#{schedule.id}" do %>
                 <i class="bi bi-trash-fill"></i>
               <% end %>
               <%= render 'dates/review'%>
