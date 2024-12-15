@@ -1,0 +1,7 @@
+<ul>
+  <% @planners.each do |planner| %>
+    <li>
+      <%= link_to planner.date, planner_path(planner) %>
+    </li>
+  <% end %>
+</ul>
