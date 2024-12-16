@@ -1,70 +1,29 @@
-<h2>スケジュール一覧</h2>
-<ul>
-  <% @schedules.each do |schedule| %>
-    <li>
-      <%= link_to @planner.title, planner_schedule_path(@planner, schedule) %>
-    </li>
-    <% end %>
-</ul>
-<div class="container pt-3">
-  <%# <div class="sectionMain"> %>
-    <button type="button" class="buttonCreate itemCreate">
-      <svg class="buttonIcon">
-        <use xlink:href="/ui/button/editButtonBottom.svg#editButtonBottom">
-        </use>
-      </svg>
-      <p class="title">しおり編集</p>
-    </button>
-    <div class="col-12">
-      <div class="row">
-        <% if @planers.present? %>
-          <%= render @planners %>
-        <% else %>
-          <div class="sectionMain.empty">
-            <div class="createButton" type="button" style="cursor: pointer;">
-              <%= link_to new_planner_path, id: "button-new" do %>
-                <p>スケジュールがありません<br>新規追加しましょう</p>
-              <%end%>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="fixed-bottom text-end p-3">
-        <%= link_to 'しおり作成' , new_planner_path, class: 'btn btn-primary' %>
+<div class="plan">
+  
+  <div class="wrapper">
+    <%= render 'shared/planTabs' %>
+    <div class="sectionMain">
+      <%# 編集ボタン %>
+      <%= button_tag(type: 'button', class: 'buttonCreate itemCreate') do %>
+        <p class="title">しおり情報編集</p>
+      <% end %>
+
+      <div class="planner">
+        <%= image_tag '/assets/default.jpg', class: "card-img-top" %>
+        <ul class="informations">
+          <li class="information">
+            <p class="title">しおりタイトル</p>
+            <p class="content"><%= @planner.title.presence || '未登録' %></p>
+          </li>
+          <li class="information">
+            <p class="title">旅行期間</p>
+            <p class="content">
+              <span class="start"><%= l(@planner.start_date, format: :default) %></span> ~ 
+              <span class="end"><%= l(@planner.end_date, format: :default) %></span>
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
-
-<%# <div class="sectionMain"> %>
-  <button type="button" class="buttonCreate itemCreate">
-    <svg class="buttonIcon">
-      <use xlink:href="/ui/button/editButtonBottom.svg#editButtonBottom">
-      </use>
-    </svg>
-    <p class="title">しおり情報編集</p>
-  </button>
-  <div class="plan"><img data-nuxt-img=""
-      srcset="https://storage.googleapis.com/tabiori-plan/plans/tspREZJZkJ3T8dR2HvSy/main/_thumb_M_TtqKWBEBMYEr.JPG 1x, https://storage.googleapis.com/tabiori-plan/plans/tspREZJZkJ3T8dR2HvSy/main/_thumb_M_TtqKWBEBMYEr.JPG 2x"
-      class="planCover"
-      src="https://storage.googleapis.com/tabiori-plan/plans/tspREZJZkJ3T8dR2HvSy/main/_thumb_M_TtqKWBEBMYEr.JPG">
-    <ul class="informations">
-      <li class="information">
-        <p class="title">しおりタイトル</p>
-        <p class="content">test</p>
-      </li>
-      <li class="information">
-        <p class="title">旅行期間</p>
-        <p class="content"><span class="start">2024年12月21日(Sat)</span> ~ <span
-          class="end">2024年12月22日(Sun)</span></p>
-      </li>
-      <li class="information">
-        <p class="title">費用</p>
-        <p class="content">未登録</p>
-      </li>
-    </ul>
-  </div>
-    <button type="button" class="button">
-    <p class="title">しおりを削除</p>
-    </button>
 </div>

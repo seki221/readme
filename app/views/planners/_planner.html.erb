@@ -1,7 +1,15 @@
-<ul>
-  <% @planners.each do |planner| %>
-    <li>
-      <%= link_to planner.date, planner_path(planner) %>
-    </li>
-  <% end %>
-</ul>
+<% @planners.each do |planner| %>
+  <li>
+    <%= link_to planner_path(planner), class: "card", style: "width: 300px;" do %>
+      <%= image_tag '/assets/default.jpg', class: "card-img-top" %>
+      <div class="planinformations">
+        <div class="span">
+          <span class="start">
+            <%= l planner.start_date, format: :default if planner.start_date.present? %>
+          </span>
+        </div>
+        <h2 class="card-title"><%= planner.title %></h2>
+      </div>
+    <% end %>
+  </li>
+<% end %>
