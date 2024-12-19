@@ -1,27 +1,30 @@
 
     <div class="field" >
       <div class="mb-3">
-        <%= f.text_field :destination , placeholder:"目的地"%>
+        <%= f.text_field :title , placeholder:"目的地"%>
       </div>
       <div class="mb-3 pl-3 d-flex　flex-wrap flex-lg-nowrap">
         <div class="mb-3">
-        <%= f.label :start_at, '開始' %>
-        <%= f.datetime_local_field :start_at%>
+        <%= f.label :start_date, '開始' %>
+        <%= f.datetime_local_field :start_date, required: true %>
         </div>
         <div class="sp-br"></div>
         <div class="dw">
         >>
         </div>
         <div class="mb-3">
-        <%= f.label :end_at, '終了' %>
-        <%= f.datetime_local_field :end_at%>
+        <%= f.label :end_date, '終了' %>
+        <%= f.datetime_local_field :end_date, required: true %>
         </div>
       </div>
       <div class="mb-3">  
         <%= f.label :経費 %>
         <%= f.text_field :cost %>
       </div>
-      <%= render 'transportation_fields', f: f %>
+      <div class="mb-3">
+        <%= f.text_field :transportation , placeholder:"移動方法"%>
+      </div>
+      
       <div class="mb-3">
         <%= f.label :場所＊ %>
         <%= f.text_field :place %>

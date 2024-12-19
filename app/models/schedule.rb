@@ -6,9 +6,10 @@ class Schedule < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_and_belongs_to_many :planners
 
-  validates :start_at, presence: true
-  validates :end_at, presence: true
-  validate :end_after_start
+  validates :title, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validate :end_date_after_start_date
 
   def self.ransackable_associations(auth_object = nil)
     %w[user]
@@ -19,9 +20,11 @@ class Schedule < ApplicationRecord
   end
 
 
-  def end_after_start
-    if end_at.present? && start_at.present? && end_at <= start_at
-      errors.add(:end_at, 'は開始日時より後である必要があります')
+  def end_date_after_start_date
+    return if start_date.blank? || end_date.blank?
+
+    if end_date < start_date
+      errors.add(:end_date, 'は開始日時より後に設定してください。')
     end
   end
 

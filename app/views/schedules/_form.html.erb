@@ -1,10 +1,10 @@
 <div class="schedule">
-  <%= form_with model: schedule, local: true  do |f|%>
-    <% if schedule.errors.any? %>
+  <%= form_with model: @schedule, url: planner_schedules_path(@planner),  local: true  do |f|%>
+    <% if @schedule.errors.any? %>
       <div id="error_explanation" class="alert alert-danger">
-        <h2><%= pluralize(schedule.errors.count, "エラー") %>が発生しました:</h2>
+        <h2><%= pluralize(@schedule.errors.count, "エラー") %>が発生しました:</h2>
         <ul>
-          <% schedule.errors.full_messages.each do |message| %>
+          <% @schedule.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
@@ -13,13 +13,14 @@
 
     <%= render 'schedules/field', f: f %>
 
+    
     <div class="actions">
-      <% if form_action == :new %>
-        <%= f.submit t('schedules.new.create', default: '作成する'), class: "btn btn-primary" ,name: "commit_create"%>
-        <%= f.submit t('schedules.new.next', default: '次へ進む'), class: "btn btn-secondary" ,name:"commit_next" %>
-      <% elsif form_action == :edit %>
+      <% if @schedule.new_record? %>
+        <%= f.submit t('schedules.new.create', default: '作成する'), class: "btn btn-primary", name: "commit_create" %>
+      <% else %>
         <%= f.submit t('schedules.edit.edit', default: '保存する'), class: "btn btn-primary" %>
       <% end %>
     </div>
+
   <% end %>
 </div>
