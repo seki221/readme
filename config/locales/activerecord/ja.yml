@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       schedule: スケジュール
       comment: コメント
+      planner: 予定帳
     attributes:
       user:
         email: メールアドレス
