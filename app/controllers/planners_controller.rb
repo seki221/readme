@@ -1,8 +1,9 @@
 class PlannersController < ApplicationController
-  before_action :authenticate_user! # Deviseを使用している場合
+  before_action :authenticate_user! 
+  
 
   def index
-    @planner = Planner.all.order(date: :asc)
+    @planners = Planner.all
   end
 
   def new
