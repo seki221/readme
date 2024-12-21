@@ -1,0 +1,58 @@
+
+/* レビューの星 */
+.stars {
+  direction: rtl;
+  /* 右から並べたい場合 */
+  display: inline-block;
+}
+
+.stars input[type='radio'] {
+  display: none;
+  /* ラジオボタンを非表示 */
+}
+
+.stars label {
+  font-size: 30px;
+  color: #D2D2D2;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.review-before::before {
+  content: '||';
+}
+
+.stars label:hover,
+.stars label:hover~label,
+.stars input[type='radio']:checked~label {
+  color: #F8C601;
+}
+
+.arrow_box {
+  position: relative;
+  background: rgb(69, 115, 255);
+  margin-bottom: 5px;
+  color: #fff;
+  margin-left: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.arrow_box:after,
+.arrow_box:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(109, 157, 213, 0);
+  border-right-color: rgb(69, 115, 255);
+  border-width: 20px;
+  margin-top: -20px;
+}
