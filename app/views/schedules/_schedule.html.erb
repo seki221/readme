@@ -1,22 +1,23 @@
 <%= render 'shared/planTabs' %>
 <div class="sectionMain">
-  <%= button_tag(type: 'button', class: 'buttonCreate itemCreate') do %>
-    <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id) %>
-
-  <% end %>
+  <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class: "buttonCreate"  %>
+  
   <div class="content">
+    
     <% @schedules.each do |schedule| %>
-      <li class="schedule-content mb-3 ">
-        <p class="content">
-          <span class="start">
-          <%= l schedule.start_date, format: :default if schedule.start_date.present? %>〜
-          </span>
-          <span class="end">
-          <%= l schedule.end_date, format: :default if schedule.end_date.present? %>
-          </span>
-        </p>
-        <p class="content"><%= schedule.title.presence  %></p>
-      </li>
+      <%= link_to planner_schedule_path(planner_id: @planner.id, id: schedule.id) do %>
+        <li class="schedule-content mb-3 ">
+          <p class="content">
+            <span class="start">
+            <%= l schedule.start_date, format: :short if schedule.start_date.present? %>〜
+            </span>
+            <span class="end">
+            <%= l schedule.end_date, format: :short if schedule.end_date.present? %>
+            </span>
+          </p>
+          <p class="content"><%= schedule.title.presence  %></p>
+        </li>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,11 +1,13 @@
 <div class="wrapper">
   <% if @schedules.present? %>
     <%= render 'schedule' %>
-    <%= paginate @schedules %>
   <% else %>
     <div class="col-12">
       <p>スケジュールがありません</p>
     </div>
+    <%= button_tag(type: 'button', class: 'buttonCreate itemCreate') do %>
+    <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class:'buttonlink' %>
+    <% end %>
   <% end %>
 </div>
 <%# <div class="container card-grid mb-5 pt-2"> %>
