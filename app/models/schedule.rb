@@ -1,10 +1,11 @@
 class Schedule < ApplicationRecord
   belongs_to :user
+  belongs_to :planner
   has_many :reviews, dependent: :destroy
   has_many :schedule_transportations, dependent: :destroy
   has_many :transportations, through: :schedule_transportations
   has_many :favorites, dependent: :destroy
-  has_and_belongs_to_many :planners
+  # has_and_belongs_to_many :planners
 
   validates :title, presence: true
   validates :start_date, presence: true
