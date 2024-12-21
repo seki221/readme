@@ -5,13 +5,6 @@ class SchedulesController < ApplicationController
   # before_action :set_ransack
   def index
     @schedules = @planner.schedules
-    # デフォルトのransack条件
-    # default_params = {
-    #   start_at_gteq: Time.zone.now.beginning_of_month,
-    #   start_at_lteq: Time.zone.now.end_of_month
-    # }
-    # @q = Schedule.ransack(params[:q] || default_params)
-    @schedules = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new
@@ -34,7 +27,7 @@ class SchedulesController < ApplicationController
     end
 
     if @schedule.save
-      redirect_to root_path, notice: 'スケジュールが作成されました。'
+      redirect_to planner_schedules_path(@planner), notice: 'スケジュールが作成されました。'
     else
       render :new
     end
@@ -57,8 +50,8 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find(params[:id])
-    @planners = @schedule.planners
-    @schedules_for_date = Schedule.where(date: @schedule.date).order(:start_at)
+    # @planners = @schedule.planners
+    # @schedules_for_date = Schedule.where(date: @schedule.date).order(:start_date)
   end
 
   def edit
@@ -71,22 +64,7 @@ class SchedulesController < ApplicationController
     flash[:notice_destroy] = "スケジュールを削除しました"
     redirect_to :date
   end
-
-  # def next_step
-  #   @schedule = current_user.schedules.build(schedule_params)
-  #   # 次のステップのロジックをここに記述
-  #   if params[:commit_next] # "次へ進む" ボタンの処理
-  #     if @schedule.save
-  #       redirect_to next_step_path(@schedule), notice: t('schedules.flash.created')
-  #     else
-  #       render :new, status: :unprocessable_entity
-  #     end
-  #   end
-  # end
-# ↑なくす前提で
-
-
-
+  
 
 
 private
