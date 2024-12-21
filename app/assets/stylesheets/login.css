@@ -23,6 +23,10 @@
   box-sizing: border-box;
 }
 
+.justify-between {
+  justify-content: space-between;
+  white-space: nowrap;
+}
 /* タイトルスタイル */
 .devise-title {
   font-size: 24px;

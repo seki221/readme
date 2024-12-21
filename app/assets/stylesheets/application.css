@@ -1,6 +1,13 @@
 body {
   background: #f2f2f2!important;
 }
+
+@media screen and (min-width: 1366px) {
+  .buttonCreate {
+    right: calc(50% - 680px);
+
+  }
+}
 header{
   width: 100%;
   /* max-width: 1366px; */
@@ -10,6 +17,32 @@ header{
   flex-direction: row!important;
   position: fixed;
 }
+
+/* footer */
+.w-full{
+  width: 100%;
+}
+.text-neutral{
+  margin: 0 1rem;
+}
+.w-4 {
+  width: 1rem;
+}
+.h-4{
+  height: 1rem;
+}
+footer .flex{
+  display: flex;
+  background: rgb(108 117 125);
+  box-shadow: none
+}
+.flex-col{flex-direction: column;}
+.items-center {
+  align-items: center;
+  margin: 0 1rem;
+}
+/* ここまで */
+
 .wrapper {
   display: grid !important ;
   grid-template-columns: 224px 1fr!important;
@@ -24,7 +57,7 @@ header{
   flex-direction: column;
   height: calc(100vh - 132px);
   left: 12px;
-  margin-top: 1rem;
+  margin: 3rem 0;
   padding: 12px;
   position: sticky;
   top: 92px;
@@ -49,37 +82,38 @@ padding: 4px 12px;
   padding: 12px 12px 56px;
   margin-top: 1rem;
 }
-@media screen and (min-width: 1366px) {
-  .buttonCreate {
-    right: calc(50% - 680px);
 
-  }
-}
 
 p.button{
   margin-top: 0;
   margin-bottom: 0;
 }
-
-.buttonCreate {
-  align-items: center;
-  background: #16a5bc;
-  border: 2px solid #16a5bc;
-  border-radius: 28px;
-  bottom: 0;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .4);
-  display: flex;
-  margin: 12px 12px 12px auto;
-  padding: 8px 12px;
-  position: fixed;
-  right: 0;
-  transition: .4s;
-  z-index: 10;
-  color: #fff;
-  font-size: 12pt;
-  font-weight: 700;
-  /* right: calc(50% - 680px); */
+/* 新規作成ボタン */
+.container .add-planer{
+  overflow: hidden;
+  padding: 8px;
 }
+.button-group{
+  text-align: right;
+  margin-top: 24px;
+}
+.buttonCreate{
+  position: relative;
+  background: #ee3c77;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+  margin-left: 24px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  min-width: 48px;
+  min-height: 38px;
+  text-align: right;
+}
+
 .buttonCreate .buttonIcon {
   height: 20px;
   margin-right: 12px;
