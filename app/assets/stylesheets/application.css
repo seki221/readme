@@ -95,7 +95,8 @@ p.button{
 }
 .button-group{
   text-align: right;
-  margin-top: 24px;
+  margin: 24px 0;
+  max-width: 800px;
 }
 .buttonCreate{
   position: relative;
@@ -122,6 +123,27 @@ p.button{
   width: 20px;
   fill: #fff;
 }
+.buttonedit {
+  position: relative;
+  background: #ee3c77;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+  margin-left: 24px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  min-width: 48px;
+  min-height: 38px;
+  text-align: center;
+}
+
+.buttontitle{
+  margin-bottom: 0;
+}
+
 .buttonlink{
   color: #fff;
 }

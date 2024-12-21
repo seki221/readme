@@ -2,10 +2,11 @@
   <%= render 'shared/planTabs' %>
   <div class="sectionMain">
     <%# 編集ボタン %>
-    <%= button_tag(type: 'button', class: 'buttonCreate itemCreate') do %>
-      <p class="title">スケジュール情報編集</p>
-    <% end %>
-
+    <div class="button-group">
+      <%= button_tag(type: 'button', class: 'buttonedit') do %>
+        <p class="buttontitle">スケジュール情報編集</p>
+      <% end %>
+    </div>
     <div class="plan">
       <div class="lists">
         <div class="header">
@@ -22,15 +23,15 @@
             </li>
             <div class="list">
               <p class="title">場所</p>
-              <p class="content"><%= @schedule.place.presence  %></p>
+              <p class="content"><%= @schedule.place.presence || '未登録'  %></p>
             </div>
             <div class="list">
               <p class="title">費用</p>
-              <p class="content"><%= @schedule.cost.presence  %></p>
+              <p class="content"><%= @schedule.cost.presence || '未登録' %></p>
             </div>
             <div class="list">
               <p class="title">説明</p>
-              <p class="content"><%= @schedule.guaid.presence  %></p>
+              <p class="content"><%= @schedule.guaid.presence || '未登録' %></p>
             </div>
           </ul>
         </div>
