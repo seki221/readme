@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_12_13_141343) do
+ActiveRecord::Schema.define(version: 2024_12_15_092210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,13 @@ ActiveRecord::Schema.define(version: 2024_12_13_141343) do
   end
 
   create_table "planners", force: :cascade do |t|
-    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_planners_on_user_id"
   end
 
   create_table "planners_schedules", force: :cascade do |t|
@@ -58,9 +62,6 @@ ActiveRecord::Schema.define(version: 2024_12_13_141343) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string "destination"
-    t.datetime "start_at"
-    t.datetime "end_at"
     t.integer "cost"
     t.text "review"
     t.string "transportation"
@@ -72,6 +73,9 @@ ActiveRecord::Schema.define(version: 2024_12_13_141343) do
     t.string "place"
     t.text "guaid"
     t.bigint "planner_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "title"
     t.index ["planner_id"], name: "index_schedules_on_planner_id"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
@@ -82,23 +86,13 @@ ActiveRecord::Schema.define(version: 2024_12_13_141343) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["schedule_id"], name: "index_transportations_on_schedule_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "nickname"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+  ｀.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "favorites", "schedules"
   add_foreign_key "favorites", "users"
+  add_foreign_key "planners", "users"
   add_foreign_key "planners_schedules", "planners"
   add_foreign_key "planners_schedules", "schedules"
   add_foreign_key "schedule_transportations", "schedules"
