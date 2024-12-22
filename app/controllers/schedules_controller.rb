@@ -34,19 +34,14 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    @schedule = Schedule.find(params[:id])
-    @planner = Planner.find(params[:id])
-    @schedule.assign_attributes(schedule_params)
-    @schedule.date = @schedule.start_at.to_date if @schedule.start_at.present?
-    # @planner = Planner.find_or_create_by(start_date: @schedule.start_date.to_date)
-
-    if @schedule.save
-      redirect_to date_show_path(date: @schedule.start_at.to_date), notice: 'スケジュールが更新されました。'
-      
+    @schedule = @planner.schedules.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to planner_schedule_path(@planner, @schedule), notice: 'スケジュールが更新されました。'
     else
       render :edit
     end
   end
+
 
   def show
     @schedule = Schedule.find(params[:id])
