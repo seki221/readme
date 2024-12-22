@@ -3,36 +3,51 @@
   <div class="sectionMain">
     <%# 編集ボタン %>
     <div class="button-group">
-      <%= button_tag(type: 'button', class: 'buttonedit') do %>
-        <p class="buttontitle">スケジュール情報編集</p>
+      <% if @schedule && current_user == @schedule.user %>
+        <div class='d-flex justify-content-end'>
+          <%= link_to edit_planner_schedule_path(@planner, @schedule), id: "button-edit-#{@schedule.id}" do %>
+            <i class='bi bi-pencil-fill'></i>
+          <% end %>
+          
+        </div>
       <% end %>
     </div>
     <div class="plan">
       <div class="lists">
-        <div class="header">
+        <div class="contents">
+          <summary class="onedayHeader">
+            <div class="title" style="text-align: center;">
+              <p class="date mb-0" ><%= l(@planner.start_date, format: :default) %></p>
+            </div>
+          </summary>
           <ul class="informations">
             <li class="information">
               <p class="content">
-                <span class="start"><%= l(@planner.start_date, format: :default) %></span> ~ 
-                <span class="end"><%= l(@planner.end_date, format: :default) %></span>
+                <p class="title">時間</p>
+                <span class="start">
+                <%= l @schedule.start_date, format: :only_time%>〜
+                </span>
+                <span class="end">
+                <%= l @schedule.end_date, format: :only_time%>
+                </span>
               </p>
             </li>
             <li class="information">
               <p class="title">しおりタイトル</p>
               <p class="content"><%= @schedule.title.presence || '未登録' %></p>
             </li>
-            <div class="list">
+            <li class="information">
               <p class="title">場所</p>
               <p class="content"><%= @schedule.place.presence || '未登録'  %></p>
-            </div>
-            <div class="list">
+            </li>
+            <li class="information">
               <p class="title">費用</p>
               <p class="content"><%= @schedule.cost.presence || '未登録' %></p>
-            </div>
-            <div class="list">
+            </li>
+            <li class="information">
               <p class="title">説明</p>
               <p class="content"><%= @schedule.guaid.presence || '未登録' %></p>
-            </div>
+            </li>
           </ul>
         </div>
       </div>
