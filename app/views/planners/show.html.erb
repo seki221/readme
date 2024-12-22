@@ -3,11 +3,7 @@
   <%= render 'shared/planTabs' %>
   <div class="sectionMain">
     <%# 編集ボタン %>
-    <div class="button-group">
-      <%= button_tag(type: 'button', class: 'buttonedit') do %>
-        <p class="buttontitle">しおり情報編集</p>
-      <% end %>
-    </div>
+    
     <div class="plan">
       <%= image_tag '/assets/default.jpg', class: "card-img-top" %>
       <ul class="informations">
@@ -24,8 +20,14 @@
         </li>
       </ul>
     </div>
-    <div type="button" class="button">
-      <%= link_to "しおりを削除", planner_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "button" %>
+      <% if @planner.user == current_user %>
+        <%= link_to edit_planner_path(@planner), class: 'buttonedit' do %>
+          <p class="buttontitle">しおり情報編集</p>
+        <% end %>
+      <%= link_to "しおりを削除", planner_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "buttonedit" %>
+      <% end %>
+      
+    
     </div>
   </div>
 </div>
