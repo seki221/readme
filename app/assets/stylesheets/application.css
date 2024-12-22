@@ -1,15 +1,23 @@
+html,body{
+  height: 100%;
+}
 body {
   background: #f2f2f2!important;
+  display: flex;
+  flex-direction: column;
 }
-
+.content-main{
+  flex: 1;
+}
 @media screen and (min-width: 1366px) {
   .buttonCreate {
     right: calc(50% - 680px);
-
   }
 }
-header{
+header,footer{
   width: 100%;
+  z-index: 50;
+  /* height: 100%; */
   /* max-width: 1366px; */
 }
 
@@ -17,20 +25,22 @@ header{
   flex-direction: row!important;
   position: fixed;
 }
+.planner{
+  margin-top: 10rem;
+}
 
 /* footer */
+footer{
+  /* height: 100%; */
+  position: sticky;
+}
 .w-full{
   width: 100%;
 }
-.text-neutral{
-  margin: 0 1rem;
+.bottom-0 {
+  bottom: 0;
 }
-.w-4 {
-  width: 1rem;
-}
-.h-4{
-  height: 1rem;
-}
+
 footer .flex{
   display: flex;
   background: rgb(108 117 125);
@@ -98,7 +108,7 @@ p.button{
   margin: 24px 0;
   max-width: 800px;
 }
-.buttonCreate{
+.buttonCreate,.buttonedit{
   position: relative;
   background: #ee3c77;
   border-radius: 4px;
@@ -106,12 +116,18 @@ p.button{
   display: inline-block;
   padding: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
-  margin-left: 24px;
-  font-size: 16px;
+  margin-left: 75%;
+  font-size: 22px;
   border: none;
   cursor: pointer;
   min-width: 48px;
   min-height: 38px;
+}
+
+.buttonedit {
+  text-align: center;
+}
+.buttonCreate{
   text-align: right;
 }
 
@@ -122,22 +138,6 @@ p.button{
   object-fit: contain;
   width: 20px;
   fill: #fff;
-}
-.buttonedit {
-  position: relative;
-  background: #ee3c77;
-  border-radius: 4px;
-  color: #fff;
-  display: inline-block;
-  padding: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
-  margin-left: 24px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  min-width: 48px;
-  min-height: 38px;
-  text-align: center;
 }
 
 .buttontitle{
@@ -233,11 +233,13 @@ p.button{
   }
 
   .onedayHeader{
-    align-items: center;
     border-bottom: 2px solid #bbb;
-    /* border-radius: 12px; */
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 12px;
+    text-align: right;
+    /* border-radius: 12px; */
+    font-weight: bolder;
+    font-size: 24px;
   }
