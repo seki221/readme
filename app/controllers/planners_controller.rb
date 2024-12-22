@@ -11,7 +11,7 @@ class PlannersController < ApplicationController
   end
 
   def create
-    @planner = current_user.planner.new(planner_params)
+    @planner = current_user.planners.new(planner_params)
     if @planner.save
       redirect_to @planner, notice: t('defaults.flash_message.created')
     else
