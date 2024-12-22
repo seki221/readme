@@ -15,11 +15,7 @@
 
     
     <div class="actions">
-      <% if @schedule.new_record? %>
         <%= f.submit t('schedules.new.create', default: '作成する'), class: "btn btn-primary", name: "commit_create" %>
-      <% else %>
-        <%= f.submit t('schedules.edit.edit', default: '保存する'), class: "btn btn-primary" %>
-      <% end %>
     </div>
 
   <% end %>
