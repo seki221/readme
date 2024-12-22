@@ -43,7 +43,7 @@ footer{
 
 footer .flex{
   display: flex;
-  background: rgb(108 117 125);
+  background: rgb(108, 117, 125);
   box-shadow: none
 }
 .flex-col{flex-direction: column;}
