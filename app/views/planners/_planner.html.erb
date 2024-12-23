@@ -1,12 +1,14 @@
 <% @planners.each do |planner| %>
   <li class="planlink">
-    <%= link_to planner_path(planner), class: "card", style: "width: 300px; " do %>
+    <%= link_to planner_path(planner), class: "card"  do %>
+      <%# MVP後S3か何か追加↓ %>
       <%= image_tag '/assets/default.jpg', class: "card-img-top", style:"height: 120px;"%>
-      <div class="planinformation">
-        <div class="span">
+      <div class="planinformation center">
+        <div class="d-flex"style="flex-direction:column;">
           <span class="start">
-            <%= l planner.start_date, format: :default if planner.start_date.present? %>〜
+            <%= l planner.start_date, format: :default if planner.start_date.present? %>
           </span>
+          <span>~</span>
           <span class="end">
             <%= l planner.end_date, format: :default if planner.end_date.present? %>
           </span>
