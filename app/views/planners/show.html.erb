@@ -1,7 +1,7 @@
 
 <div class="wrapper">
   <%= render 'shared/planTabs' %>
-  <div class="sectionMain">
+  <div class="sectionMain d-flex">
     <%# 編集ボタン %>
     
     <div class="plan">
@@ -20,14 +20,14 @@
         </li>
       </ul>
     </div>
-      <% if @planner.user == current_user %>
-        <%= link_to edit_planner_path(@planner), class: 'buttonedit' do %>
-          <p class="buttontitle">しおり情報編集</p>
+      <div class="d-flex-edit" style="flex-direction: column">
+        <% if @planner.user == current_user %>
+          <%= link_to edit_planner_path(@planner), class: 'buttonedit' do %>
+            <p class="buttontitle">しおり情報編集</p>
+          <% end %>
+        <%= link_to "しおりを削除", planner_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "buttonedit" %>
         <% end %>
-      <%= link_to "しおりを削除", planner_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "buttonedit" %>
-      <% end %>
-      
-    
+      </div>
     </div>
   </div>
 </div>

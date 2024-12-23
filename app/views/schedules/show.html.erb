@@ -2,16 +2,8 @@
   <%= render 'shared/planTabs' %>
   <div class="sectionMain">
     <%# 編集ボタン %>
-    <div class="button-group">
-      <% if @schedule && current_user == @schedule.user %>
-        <div class='d-flex justify-content-end'>
-          <%= link_to edit_planner_schedule_path(@planner, @schedule), id: "button-edit-#{@schedule.id}" do %>
-            <i class='bi bi-pencil-fill'></i>
-          <% end %>
-          
-        </div>
-      <% end %>
-    </div>
+    
+
     <div class="plan">
       <div class="lists">
         <div class="contents">
@@ -49,6 +41,15 @@
               <p class="content"><%= @schedule.guaid.presence || '未登録' %></p>
             </li>
           </ul>
+          <div class="button-group">
+            <% if @schedule && current_user == @schedule.user %>
+              <div class='d-flex justify-content-end' size="30">
+                <%= link_to edit_planner_schedule_path(@planner, @schedule) do %>
+                  <i class='bi bi-pencil-fill' width="50" height="50"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
