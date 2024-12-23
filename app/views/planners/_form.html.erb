@@ -1,25 +1,16 @@
 <div class="planner">
   <%= form_with model: @planner, local: true do |f| %>
-    
-    <div class="mb-3">
-      <%= f.label :title, 'タイトル' %>
-      <%= f.text_field :title, placeholder: "タイトル" %>
-    </div>
-    <div class="mb-3 pl-3 d-flex">
-      <div class="mb-3 d-flex flex-wrap flex-lg-nowrap">
-      <%= f.label :date, '旅行期間' %>
+    <% if @planner.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@planner.errors.count, "エラー") %>が発生しました:</h2>
+        <ul>
+          <% @planner.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
-      <div>
-        <div class="mb-3">
-          <%= f.date_field :start_date %>
-        </div>
-        <div class="sp-br"></div>
-        <div class="dw">~</div>
-        <div class="mb-3">
-          <%= f.date_field :end_date %>
-        </div>
-      </div>
-    </div>
+    <% end %>
+    <%= render 'planners/field', f: f %>
     <div class="actions">
         <%= f.submit t('planner.new.create', default: '作成する'), class: "buttonCreate itemCreate", name: "commit_create" %>
     </div>
