@@ -10,10 +10,7 @@
         </ul>
       </div>
     <% end %>
-
     <%= render 'schedules/field', f: f %>
-
-    
     <div class="actions">
         <%= f.submit t('schedules.new.create', default: '作成する'), class: "btn btn-primary", name: "commit_create" %>
     </div>
