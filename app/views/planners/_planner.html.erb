@@ -1,8 +1,9 @@
 <% @planners.each do |planner| %>
   <li class="planlink">
     <%= link_to planner_path(planner), class: "card"  do %>
-      <%# MVP後S3か何か追加↓ %>
-      <%= image_tag '/assets/default.jpg', class: "card-img-top", style:"height: 120px;"%>
+      <div class="box card-img-top", style:height 120px;>
+      <%# MVP後S3か何か追加%>
+      </div>
       <div class="planinformation center">
         <div class="d-flex"style="flex-direction:column;">
           <span class="start">
@@ -18,3 +19,6 @@
     <% end %>
   </li>
 <% end %>
+
+
+<%= render 'shared/footer' %>
