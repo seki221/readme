@@ -14,15 +14,16 @@
       <%= link_to planner_schedule_path(planner_id: @planner.id, id: schedule.id) do %>
         <li class="schedule-content mb-3 ">
           <div class="d-flex">
-          <p class="content mx-4	">
-            <span class="start">
-            <%= l schedule.start_date, format: :only_time if schedule.start_date.present? %>〜
-            </span>
-            <span class="end">
-            <%= l schedule.end_date, format: :only_time if schedule.end_date.present? %>
-            </span>
-          </p>
-          <p class="content mx-lg-5 mb-0 pt-3"><%= schedule.title.presence  %></p>
+            <p class="content mx-4	">
+              <span class="start">
+              <%= l schedule.start_date, format: :only_time if schedule.start_date.present? %>〜
+              </span>
+              <span class="end">
+              <%= l schedule.end_date, format: :only_time if schedule.end_date.present? %>
+              </span>
+            </p>
+            <div class="schedule-title">
+            <p class="content mx-lg-5 mb-0 pt-3"style="white-space: nowrap"><%= schedule.title.presence  %></p></div>
           </div>
           
         </li>
