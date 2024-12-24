@@ -1,5 +1,7 @@
 class PlannersController < ApplicationController
   before_action :authenticate_user! 
+  before_action :find_planner, only: %i[edit update destroy]
+  before_action :correct_user, only: %i[edit update destroy]
   
 
   def index
@@ -40,12 +42,14 @@ class PlannersController < ApplicationController
 
 
   def destroy
-    @planner = current_user.planners.find_by(id: params[:id])
-    if @planner
-      @planner.destroy!
-      redirect_to planners_path, status: :see_other, notice: t('defaults.flash_message.deleted', item: Planner.model_name.human)
+    # binding.break
+    planner = current_user.planners.find(params[:id])
+    if planner
+      planner.destroy
+      redirect_to root_path, notice: t('defaults.flash_message.deleted', item: Planner.model_name.human)
     else
-      redirect_to planners_path, status: :not_found, alert: t('defaults.flash_message.not_found', item: Planner.model_name.human)
+      redirect_to planners_path, alert: t('defaults.flash_message.not_found', item: Planner.model_name.human)
+
     end
   end
 
@@ -54,5 +58,14 @@ class PlannersController < ApplicationController
   
   def planner_params
     params.require(:planner).permit(:title, :start_date, :end_date)
+  end
+
+  def correct_user
+    @planner = current_user.planners.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @planner.user == current_user
+  end
+
+  def find_planner
+    @planner = current_user.planners.find(params[:id])
   end
 end
