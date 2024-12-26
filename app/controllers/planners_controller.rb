@@ -14,6 +14,8 @@ class PlannersController < ApplicationController
 
   def create
     @planner = current_user.planners.new(planner_params)
+    @planner.start_date = @planner.start_date.change(hour: 0, min: 0, sec: 0) if @planner.start_date.present?
+    @planner.end_date = @planner.end_date.change(hour: 23, min: 59, sec: 59) if @planner.end_date.present?
     if @planner.save
       redirect_to @planner, notice: t('defaults.flash_message.created')
     else
@@ -34,7 +36,6 @@ class PlannersController < ApplicationController
       render :edit
     end
   end
-
 
   def edit
   @planner = current_user.planners.find(params[:id])
