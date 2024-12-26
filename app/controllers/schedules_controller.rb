@@ -5,6 +5,8 @@ class SchedulesController < ApplicationController
   # before_action :set_ransack
   def index
     @schedules = @planner.schedules
+    @schedules = Schedule.where(planner_id: @planner.id).order(:start_date)
+    
   end
 
   def new
@@ -14,17 +16,17 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    # @schedule = current_user.schedules.build(schedule_params)
+    @schedule = current_user.schedules.build(schedule_params)
     @planner = Planner.find(params[:planner_id])
     @schedule = @planner.schedules.build(schedule_params)
     @schedule.user = current_user
 
-    if @schedule.start_date.present?
-      # @planner = Planner.find_or_create_by(date: @schedule.start_date.to_date)
-      @planner = Planner.find_or_create_by(start_date: @schedule.start_date.to_date)
+    # if @schedule.start_date.present?
+    #   # @planner = Planner.find_or_create_by(date: @schedule.start_date.to_date)
+    #   @planner = Planner.find_or_create_by(start_date: @schedule.start_date.to_date)
 
-      @planner.schedules << @schedule # Planner と Schedule を関連付け
-    end
+    #   @planner.schedules << @schedule # Planner と Schedule を関連付け
+    # end
 
     if @schedule.save
       redirect_to planner_schedules_path(@planner), notice: 'スケジュールが作成されました。'

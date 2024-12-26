@@ -8,7 +8,7 @@
   <div class="contents">
     <summary class="onedayHeader">
       <div class="title">
-        <p class="date"><%= l(@planner.start_date, format: :default) %></p>
+        <p class="date"><%= l(@planner.start_date, format: :date_short) %></p>
       </div>
     </summary>
     
@@ -16,6 +16,7 @@
       <%= link_to planner_schedule_path(planner_id: @planner.id, id: schedule.id) do %>
         <li class="schedule-content mb-3 ">
           <div class="d-flex">
+          <p><%= l schedule.start_date, format: :day if schedule.start_date.present? %>日</p>
           <p class="content mx-4	">
             <span class="start">
             <%= l schedule.start_date, format: :only_time if schedule.start_date.present? %>〜
@@ -32,4 +33,5 @@
     <% end %>
   </div>
 </div>
+
 
