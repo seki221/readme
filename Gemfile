@@ -100,4 +100,3 @@ gem 'pg', group: :production
 gem 'devise', group: [:development, :test, :production]
 
 gem "webpacker", "~> 5.4"
-# gem 'byebug', group: [:development, :test]
