@@ -8,3 +8,4 @@ config/credentials/production.yml.enc
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+package-lock.json
