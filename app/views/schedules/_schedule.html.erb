@@ -1,7 +1,9 @@
 <%= render 'shared/planTabs' %>
 <div class="sectionMain">
   <div class="button-group">
-  <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class: "buttonedit"  %>
+  <% if @planner.user == current_user %>
+    <%= link_to "作成", new_planner_schedule_path(planner_id: @planner.id), class:'buttonCreate itemCreate' %>
+  <% end %>
   </div>
   <div class="contents">
     <summary class="onedayHeader">
