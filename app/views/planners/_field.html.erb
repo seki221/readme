@@ -3,9 +3,9 @@
     <div class="mb-3">
       <%= f.text_field :title , placeholder:"目的地"%>
     </div>
-    <div class="mb-3">
+    <div class="form-group">
     <%= f.label :start_date, '開始' %>
-    <%= f.datetime_local_field :start_date, required: true %>
+    <%= f.datetime_select :start_date, {default: Date.today + 17.hours + 30.minutes}, class: 'form-control form-control-inline'%>
     </div>
     <div class="sp-br"></div>
     <div class="dw">
@@ -13,7 +13,8 @@
     </div>
     <div class="mb-3">
     <%= f.label :end_date, '終了' %>
-    <%= f.datetime_local_field :end_date, required: true %>
+    <%= f.datetime_select :end_date, {default: Date.today + 18.hours + 30.minutes},class: 'form-control form-control-inline' %>
     </div>
   </div>
 </div>
+
