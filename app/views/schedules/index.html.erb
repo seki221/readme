@@ -5,10 +5,8 @@
     <div class="col-12">
       <p>スケジュールがありません</p>
     </div>
-      <% if @planner.user == current_user %>
-        <%= button_tag(type: 'button', class: 'buttonCreate itemCreate') do %>
-        <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class:'buttonlink' %>
-      <% end %>
+    <%= button_tag(type: 'button', class: 'buttonCreate itemCreate') do %>
+    <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class:'buttonlink' %>
     <% end %>
   <% end %>
 </div>
