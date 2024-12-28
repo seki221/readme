@@ -4,17 +4,17 @@
     <%= form_for(resource, as: resource_name,class:"new_user", url: session_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
         <div class="field">
-          <%= f.label :email %>
+          <%= f.label :emailを入力してください %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
         <div class="field">
-          <%= f.label :password %>
+          <%= f.label :password, "パスワードを6〜128文字で入力してください"  %>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label :remember_me,"パスワードを記録しておく" %>
         </div>
       <% end %>
       <div class="actions">
