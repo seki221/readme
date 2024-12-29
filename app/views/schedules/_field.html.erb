@@ -1,11 +1,11 @@
 
     <div class="field" >
       <div class="mb-3">
-        <%= f.text_field :title , placeholder:"目的地"%>
+        <%= f.text_field :title , placeholder:"目的地※" %>
       </div>
       <div class="mb-3 pl-3 d-flex　flex-wrap flex-lg-nowrap">
         <div class="mb-3">
-        <%= f.label :start_date, '開始' %>
+        <%= f.label :start_date, '開始' %><span class="astarisk" style="color: #ff0000; ">*</span>
         <%= f.datetime_local_field :start_date, required: true %>
         </div>
         <div class="sp-br"></div>
@@ -13,7 +13,7 @@
         >>
         </div>
         <div class="mb-3">
-        <%= f.label :end_date, '終了' %>
+        <%= f.label :end_date, '終了' %><span class="astarisk" style="color: #ff0000; ">*</span>
         <%= f.datetime_local_field :end_date, required: true %>
         </div>
       </div>
@@ -22,16 +22,16 @@
         <%= f.text_field :cost %>
       </div>
       <div class="mb-3">
-        <%= f.label :移動方法 , placeholder:"移動方法"%>
+        <%= f.label :transportation, "移動方法", placeholder:"移動方法"%>
         <%= f.select :transportation, options_for_select([['車'], ['普通電車'], ['新幹線'], ['バス'], ['タクシー'],['徒歩'],['船'],['自転車'],['その他（説明欄にお願いします）', 'etc']]),multiple: true, class:"select"%>
       </div>
       
       <div class="mb-3">
-        <%= f.label :場所＊ %>
+        <%= f.label :場所 %>
         <%= f.text_field :place %>
       </div>
       <div class="mb-3">
-        <%= f.label :地点説明＊ %>
+        <%= f.label :地点説明 %>
         <%= f.text_field :guaid %>
       </div>
     </div>
