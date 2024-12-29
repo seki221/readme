@@ -245,3 +245,19 @@ p.button{
   /* flex-direction: column; */
   /* margin:10%; */
 }
+select {
+  background-color: #f2f2f2!important;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #000 !important;
+  border-radius: 4px!important;
+  display: block !important;
+  height: 3rem;
+}
+select:-internal-list-box option {
+  line-height: initial !important;
+}
+select:-internal-list-box option:checked {
+  background-color: light-dark(rgb(206, 206, 206), rgb(84, 84, 84));
+  color: light-dark(rgb(16, 16, 16), rgb(255, 255, 255));
+}

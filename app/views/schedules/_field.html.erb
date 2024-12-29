@@ -22,7 +22,8 @@
         <%= f.text_field :cost %>
       </div>
       <div class="mb-3">
-        <%= f.text_field :transportation , placeholder:"移動方法"%>
+        <%= f.label :移動方法 , placeholder:"移動方法"%>
+        <%= f.select :transportation, options_for_select([['車'], ['普通電車'], ['新幹線'], ['バス'], ['タクシー'],['徒歩'],['船'],['自転車'],['その他（説明欄にお願いします）', 'etc']]),multiple: true, class:"select"%>
       </div>
       
       <div class="mb-3">
