@@ -1,4 +1,4 @@
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1024px) {
   .buttonCreate {
     right: calc(50% - 680px);
   }
@@ -28,6 +28,14 @@ footer{
   flex-direction: row !important;
   position: fixed;
 }
+.nav-item {
+  white-space: nowrap;
+  margin: 0 3rem;
+}
+.before-login{
+  white-space: nowrap;
+  margin: 0 3rem;
+}
 .planner,.schedule{
   margin-top: 10rem;
   margin-bottom: 10rem
@@ -42,7 +50,7 @@ footer{
 }
 footer .flex {
   display: flex;
-  box-shadow: none
+  /* box-shadow: none */
 }
 .flex-col{
   flex-direction: column;

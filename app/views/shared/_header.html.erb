@@ -1,29 +1,44 @@
-<header id="header" class=" fixed top-0 left-0 w-full z-50">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+<header id="header" class=" fixed top-0 left-0 z-50" style="height: 6rem;">
+  <nav class="navbar navbar-expand-lg bg-light sp" style="height: fit-content;">
+      <div class="container-fluid bg-light">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         <% if current_user.present? %>
-          <li class="nav-item">
-            <%= link_to 'Home' , root_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'マイページ', root_path , class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'ユーザー登録', new_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
-          </li>
+          <%= link_to 'たびmemo' , root_path, class: 'navbar-brand' %>
+          <%# <a class="navbar-brand">tabimemo</a> %>
+            <form class="d-flex pt-1" role="search">
+              <input class="form-control me-2 mb-0" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-auto ">
+                <li class="nav-item ">
+                  <%= link_to 'Home' , root_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'マイページ', root_path , class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
+                </li>
+              <% else %>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-auto ">
+              <li class="nav-item before-login">
+                <%= link_to 'ユーザー登録', new_user_registration_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item before-login">
+                <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
+              </li>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  </nav>
+      </div>
+    </nav>
 </header>
