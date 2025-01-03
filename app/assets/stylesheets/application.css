@@ -1,6 +1,10 @@
-@media screen and (min-width: 1266px) {
-  .buttonCreate {
-    right: calc(50% - 680px);
+@media screen and (max-width: 600px) {
+  .planList{
+    display: grid !important;
+    max-width: 400px !important;
+  }
+  .planlink{
+    width: 100%;
   }
 }
 html,body{
@@ -13,7 +17,10 @@ body {
 }
 .content-main{
   flex: 1;
-  /* margin: 100px 0; */
+  margin-top: 6rem;
+  /* ヘッダーの高さ分だけ余白を追加 */
+  padding: 1rem;
+  /* 必要に応じて調整 */
 }
 header,
 footer{
