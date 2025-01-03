@@ -1,6 +1,11 @@
 
 <div class="wrapper">
+  <div class="sidelist-pc">
   <%= render 'shared/planTabs' %>
+  </div>
+    <div class="sidelist-sp">
+  <%= render 'shared/planTabs' %>
+  </div>
   <div class="sectionMain">
     <%# 編集ボタン %>
     
@@ -21,7 +26,7 @@
           </p>
         </li>
       </ul>
-      <div class="d-flex-edit" >
+      <div class="d-flex-edit-sp" >
         <% if @planner.user == current_user %>
           <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class: "buttonedit m-3"  %>
           <%= link_to edit_planner_path(@planner), class: 'buttonedit m-3	' do %>

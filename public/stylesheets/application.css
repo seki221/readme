@@ -1,4 +1,4 @@
-
+/* スマホ用 */
 @media screen and (max-width: 600px) {
   .planList {
     display: grid !important;
@@ -6,8 +6,34 @@
   .planlink{
     width: 100%!important;
   }
+  .sectionMain{
+    min-height: 100%!important;
+  }
+  .d-flex-edit-sp{
+    display: none !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidelist-pc{
+  width: calc(100% - 36px) !important;
+  display: none !important;
+  }
 }
-
+/* pc仕様 */
+@media screen and (min-width: 601px) {
+  .d-flex-edit-pc{
+    display: flex !important;
+    justify-content: flex-end;
+    display: none !important;
+  }
+  .sidelist-sp{
+    width: 100%!important;
+    display: none !important;
+  }
+  .wrapper{
+    grid-template-columns: 224px 1fr !important;
+  }
+}
 
 html,body{
   height: 100%;
@@ -76,7 +102,6 @@ footer .flex {
 
 .wrapper {
   display: grid !important;
-  grid-template-columns: 224px 1fr !important;
   margin: 5% auto;
   max-width: 1366px;
   width: 100%;
@@ -92,19 +117,19 @@ footer .flex {
   padding: 12px;
   position: sticky;
   top: 92px;
-  width: calc(100% - 36px);
   z-index: 10;
 }
 ul {
   list-style: none;
 }
 .planTabs .tab {
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 .planTabs .tab .tabLink {
   align-items: center;
   border: 2px solid #fff;
   border-radius: 18px;
+  border-color: #000;
   display: flex;
   padding: 4px 12px;
 }
@@ -226,12 +251,26 @@ p.button{
   color: #fb3d22;
   margin-bottom: 0;
 }
+/* 予定の日 */
 .contents{
   background: #fff;
   border-radius: 12px;
   margin: auto auto 12px;
   max-width: 800px;
 }
+/* 中身 */
+.onedayHeader{
+  border-bottom: 2px solid #bbb;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  text-align: right;
+  /* border-radius: 12px; */
+  font-weight: bolder;
+  font-size: 24px;
+}
+/* リスト */
 .schedule-content{
   align-items: center;
   border: 2px solid #fff;
@@ -244,22 +283,8 @@ p.button{
   padding: 12px;
   position: relative;
 }
-.onedayHeader{
-  border-bottom: 2px solid #bbb;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: 12px;
-  text-align: right;
-  /* border-radius: 12px; */
-  font-weight: bolder;
-  font-size: 24px;
-}
-.d-flex-edit{
-  display: flex !important;
-  justify-content: flex-end;
-  /* flex-direction: column; */
-  /* margin:10%; */
+p .date,.mx-lg-5{
+  white-space: nowrap;
 }
 select {
   background-color: #f2f2f2!important;

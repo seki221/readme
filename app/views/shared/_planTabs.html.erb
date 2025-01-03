@@ -6,5 +6,22 @@
     <li class="tab">
       <%= link_to 'その他', '#', class: 'tabLink' %>
     </li>
+    <div class="d-flex-edit-pc" >
+        <% if @planner.user == current_user %>
+      <li class="tab">
+          <%= link_to "スケジュール作成", new_planner_schedule_path(planner_id: @planner.id), class: "tabLink"  %>
+      </li>
+      <li>
+          <%= link_to edit_planner_path(@planner), class: 'tab' do %>
+            <p class="tabLink">しおり情報編集</p>
+          <% end %>
+      </li>
+      <li>
+          <%= link_to planner_path(@planner), data: { turbo_method: "delete", turbo_confirm: "削除しますか？" }, class: "tab" do%>
+            <p class="tabLink">しおりを削除</p>
+          <% end %>
+      </li>
+        <% end %>
+      </div>
   </ul>
 </div>

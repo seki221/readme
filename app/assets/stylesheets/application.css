@@ -7,6 +7,8 @@
     width: 100%;
   }
 }
+
+
 html,body{
   height: 100%;
 }
@@ -93,7 +95,7 @@ ul {
   list-style: none;
 }
 .planTabs .tab {
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 .planTabs .tab .tabLink {
   align-items: center;
@@ -256,7 +258,7 @@ p.button{
   font-size: 24px;
 }
 .d-flex-edit{
-  display: flex !important;
+  /* display: flex !important; */
   justify-content: flex-end;
   /* flex-direction: column; */
   /* margin:10%; */

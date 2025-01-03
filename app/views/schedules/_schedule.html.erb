@@ -16,7 +16,7 @@
       <%= link_to planner_schedule_path(planner_id: @planner.id, id: schedule.id) do %>
         <li class="schedule-content mb-3 ">
           <div class="d-flex">
-          <p><%= l schedule.start_date, format: :day if schedule.start_date.present? %>日</p>
+          <p class="date"><%= l schedule.start_date, format: :day if schedule.start_date.present? %></p>日
           <p class="content mx-4	">
             <span class="start">
             <%= l schedule.start_date, format: :only_time if schedule.start_date.present? %>〜
