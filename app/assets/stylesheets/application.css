@@ -134,6 +134,7 @@ p.button{
   cursor: pointer;
   min-width: 48px;
   min-height: 38px;
+  white-space: nowrap;
 }
 .buttonedit {
   text-align: center;
