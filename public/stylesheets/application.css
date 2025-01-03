@@ -1,8 +1,14 @@
-@media screen and (min-width: 1024px) {
-  .buttonCreate {
-    right: calc(50% - 680px);
+
+@media screen and (max-width: 600px) {
+  .planList {
+    display: grid !important;
+  }
+  .planlink{
+    width: 100%!important;
   }
 }
+
+
 html,body{
   height: 100%;
 }
@@ -13,15 +19,24 @@ body {
 }
 .content-main{
   flex: 1;
-  /* margin: 100px 0; */
+  /* margin: 100px 0; */margin-top: 6rem;
+    /* ヘッダーの高さ分だけ余白を追加 */
+    padding: 1rem;
+    /* 必要に応じて調整 */
+
+
 }
 
 /* header(とfooter) */
+header {
+  top: 0;
+}
+
 header,
 footer{
-  width: 100%;
+  /* width: 100%; */
   z-index: 50;
-  width: 100vw;
+  /* width: 100vw; */
   position: fixed;
   left: 0;
   right: 0;
@@ -125,6 +140,7 @@ p.button{
   cursor: pointer;
   min-width: 48px;
   min-height: 38px;
+  white-space: nowrap;
 }
 .buttonedit {
   text-align: center;
@@ -176,12 +192,6 @@ p.button{
   list-style: none;
   box-sizing: border-box;
   width: calc(33% - 6px);
-  /* overflow: hidden; */
-  /* border-radius: 12px; */
-  /* background: #fff;
-      border: 2px solid #fff; */
-  /* max-width: 800px; */
-  /* padding: 0 0 2rem 2rem; */
 }
 .plan .planCover {
   height: 400px;
