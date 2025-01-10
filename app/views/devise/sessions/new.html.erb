@@ -22,8 +22,8 @@
       </div>
     <% end %>
     <div class="actions" >
-      <%= link_to "sign up" , new_registration_path(resource_name), class: "btn btn-secondary btn-block" %>
-      <%= link_to "passwordを忘れた人" , new_password_path(resource_name), class: "btn btn-secondary btn-block" %>
+      <%= link_to t('devise.shared.links.sign_up') , new_registration_path(resource_name), class: "btn btn-secondary btn-block" %>
+      <%= link_to t('devise.shared.links.forgot_your_password') , new_password_path(resource_name), class: "btn btn-secondary btn-block" %>
     </div>
   </div>
 </div>
