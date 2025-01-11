@@ -100,3 +100,12 @@ gem 'pg', group: :production
 gem 'devise', group: [:development, :test, :production]
 
 gem "webpacker", "~> 5.4"
+
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth'
+gem 'geocoder'
+gem 'dotenv-rails'
+gem 'rails_admin'
+
+
