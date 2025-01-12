@@ -5,8 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  def twitter
+    callback_from :twitter
+  end
 
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
@@ -44,6 +45,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
 
   def failure
     redirect_to root_path
