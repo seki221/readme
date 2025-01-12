@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,:registerable,:recoverable,
+          :rememberable,:validatable,:timeoutable,:confirmable,
+          :omniauthable,omniauth_providers: [:google_oauth2]
 
   validates :nickname, presence: true, length: { minimum: 2 }
 
@@ -18,4 +19,63 @@ class User < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[user]
   end
+  
+
+  # by guest_user
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+      user.name_kana = "げすと"
+      user.country_code = "JP"
+      user.job = "サラリーマン"
+      user.is_deleted = false
+      #＊上記は一例です。
+    end
+  end
+
+  # by oauth
+  def self.from_omniauth(auth)
+    user = where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+    end
+    user.skip_confirmation! # メール認証のスキップ
+    user.save
+    user
+  end
+
+  def self.new_with_session(params, session)
+    provider = "google"
+    super.tap do |user|
+      if data = session["devise.#{ provider }_data"] && session["devise.#{ provider }_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  # URL の :id の部分に id 以外を指定
+  def to_param
+    screen_name
+  end
+
+  private ###################################################################
+    # 新規会員登録時および更新時にuser_idに重複が無いかをチェックした上で保存する
+    def check_secure_id
+      return if User.find_by(user_uid: self.user_uid) != nil
+      # 初回設定時
+      loop do
+        break if User.find_by(user_uid: self.user_uid) == nil
+        self.user_uid = SecureRandom.alphanumeric(20)
+      end
+    end
+
+    # 新規会員登録時および更新時にscreen_idに重複が無いかをチェックした上で保存する
+    def check_screen_id
+      return if User.find_by(screen_name: self.screen_name) != nil
+      loop do
+        break if User.find_by(screen_name: self.screen_name) == nil
+        self.screen_name = SecureRandom.alphanumeric
+      end
+    end
 end
