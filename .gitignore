@@ -9,3 +9,7 @@ config/credentials/production.yml.enc
 yarn-debug.log*
 .yarn-integrity
 package-lock.json
+/.env
+.DS_Store
+log/
+tmp/
