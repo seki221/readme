@@ -8,7 +8,7 @@
         
 
         <%= link_to "/" do %>
-          <i class="fas fa-home text-dark mx-3">たびメモ</i>
+          <i class="fas fa-home text-dark mx-3">たびLog</i>
         <% end %>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <form class="d-flex pt-1" role="search">
@@ -16,37 +16,32 @@
             <button class="btn btn-outline-success" type="submit">search</button>
           </form>
           <ul class="navbar-nav mb-2 mb-lg-0 ms-auto ">
-              <li class="nav-item ">
-                <%= link_to 'Home' , root_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'マイページ', root_path , class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
-              </li>
+            <li class="nav-item ">
+              <%= link_to 'Home' , root_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'マイページ', root_path , class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
+            </li>
           </ul>
-            <% else %>
-            <p>
-          <i class="fas fa-home text-dark mx-3">たびメモ</i></p>
+        <% else %>
+          <%# ログイン前 %>
+          <p><i class="fas fa-home text-dark mx-3">たびLog</i></p>
           <ul class="navbar-nav mb-2 mb-lg-0 ms-auto d-flex">
-            <% if current_page?(new_user_registration_path) %>
-              <!-- ユーザー登録ページの場合はログインリンクのみ表示 -->
-              <li class="nav-item before-login">
-                <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
-              </li>
-            <% else current_page?(new_user_session_path) %>
-              <!-- ログインページの場合はユーザー登録リンクのみ表示 -->
-              <li class="nav-item before-login">
-                <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'nav-link text-dark' %>
-              </li>
-              <li class="nav-item before-login">
-              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary mr-3" %>
-              </li>
-            <% end %>
+            <li class="nav-item before-login">
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item before-login">
+              <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item before-login">
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary mr-3" %>
+            </li>
           </ul>
         </div>
       <% end %>
