@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root to: 'home#top'
+  root to: 'home#top'
   
   # davise関係
   devise_for :users, controllers: {
@@ -21,7 +21,11 @@ Rails.application.routes.draw do
   # 管理者関連
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :admin do
-    resources :dashboard
+    root "dashboards#index"
+    resources :dashboard, only: %i[index]
+    get 'login' => 'user_sessions#new', :as => :login
+    post 'login' => "user_sessions#create"
+    delete 'logout' => 'user_sessions#destroy', :as => :logout
     resources :users, only: %i[index edit update destroy] do
     end
   end
