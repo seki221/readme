@@ -1,12 +1,9 @@
 <header id="header" class="fixed top-0 left-0 z-50" style="height: 6rem;">
   <nav class="navbar navbar-expand-lg bg-light sp" style="height: fit-content;">
     <div class="container-fluid bg-light">
-      <% if current_user.present? %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
-
         <%= link_to "/" do %>
           <i class="fas fa-home text-dark mx-3">たびログ</i>
         <% end %>
@@ -26,14 +23,19 @@
               <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
             </li>
             <li class="nav-item before-login">
-            <%= link_to "思い出ボックス", planner_path, class: "btn btn-outline-secondary mr-3" %>
+            <%= link_to "思い出ボックス", planners_path, class: 'nav-link text-dark' %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
+            <li class="nav-item before-login">
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item before-login">
+              <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item before-login">
+            <%= link_to "ゲストログイン", new_user_registration_path, method: :post, class: 'nav-link text-dark' %>
             </li>
           </ul>
         </div>
-      <% end %>
     </div>
   </nav>
 </header>
