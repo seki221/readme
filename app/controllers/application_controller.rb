@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def require_login
-    unless current_user
+    unless user_signed_in?
       redirect_to login_path, alert: 'ログインが必要です。'
     end
   end

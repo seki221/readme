@@ -1,0 +1,15 @@
+.firstview__eyecatch{
+  z-index: 1;
+}
+.img{width: 100%;}
+/* タイトルロゴ */
+
+.firstview__content{
+  color: #B31667;
+    font-size: 75px;
+    font-family: "Nico Moji";
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
