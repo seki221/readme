@@ -46,10 +46,6 @@ body {
 .content-main{
   flex: 1;
   /* margin: 100px 0; */
-  margin-top: 6rem;/* ヘッダーの高さ分だけ余白を追加 */
-
-
-
 }
 
 /* header(とfooter) */
@@ -62,7 +58,7 @@ footer{
   /* width: 100%; */
   z-index: 50;
   /* width: 100vw; */
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   right: 0;
 }
@@ -72,7 +68,7 @@ footer{
 }
 .before-login{
   white-space: nowrap;
-  margin: 0 3rem;
+  /* margin: 0 3rem; */
 }
 .planner,.schedule{
   margin-top: 10rem;

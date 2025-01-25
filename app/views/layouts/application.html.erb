@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '/stylesheets/reset.css' %>
     <%= stylesheet_link_tag '/stylesheets/application.css' %>
     <%= stylesheet_link_tag '/stylesheets/login.css' %>
     <%= stylesheet_link_tag '/stylesheets/top.css' %>
@@ -35,11 +36,11 @@
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
-    <%= render 'shared/flash_message' %>
+    
     <main class="content-main">
+    <%= render 'shared/flash_message' %>
       <%= yield %>
     </main>
-    <%= render 'shared/footer' %>
-    <%= render 'shared/flash_message' %>
   </body>
+    <%= render 'shared/footer' %>
 </html>

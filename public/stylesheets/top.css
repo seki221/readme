@@ -1,15 +1,108 @@
-.firstview__eyecatch{
-  z-index: 1;
+.top{
+  background: linear-gradient(180deg, rgba(9, 9, 121, 1) 0%, rgba(6, 193, 255, 1) 54%, rgba(255, 255, 255, 1) 83%);
+  height: 100%;
 }
-.img{width: 100%;}
-/* タイトルロゴ */
-
-.firstview__content{
+.site-logo{
   color: #B31667;
-    font-size: 75px;
-    font-family: "Nico Moji";
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
+  font-family: "Nico Moji";
+  font-size: 75px;
+  padding-top: 11rem;
+  /* top:50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* position: absolute; */
+  }
+  
+  /* タイトルセクション */
+  .title-section {
+    text-align: center;
+    /* margin-top: 20px; */
+    margin-bottom: 3rem;
+}
+/* シェアボタン */
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20rem;
+}
+.share{
+  margin: 0;
+    font-size: large;
+}
+
+.share-buttons .share-button-twitter {
+  padding: 0.3em 0.5em;
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  border-radius: 7px;
+}
+.share-buttons .share-button-line{
+  padding: 0.3em 0.5em;
+    text-decoration: none;
+    color: #fff;
+    background-color: #00ff00;
+    border-radius: 7px;
+}
+
+.share-button-twitter .fa-twitter:before {
+  content: "𝕏" ;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  padding: 0.4em;
+  font-style: normal;
+}
+
+/* 投稿カード */
+.recent-posts {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  overflow-x: auto;
+  /* 横スクロール対応 */
+  padding-bottom: 20px;
+}
+
+.post-card {
+  flex: 0 0 calc(33.333% - 20px);
+  /* カードの幅（3個表示時） */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 5px;
+  text-align: left;
+  background-color: white;
+}
+
+.post-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.post-title {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.post-snippet {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* サイト案内 */
+#about{
+  margin-bottom: 10rem;
+}
+.common__sub-ttl{
+  color: #B31667;
+  font-family: "Nico Moji";
+  text-align: center;
 }

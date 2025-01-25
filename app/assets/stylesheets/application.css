@@ -19,10 +19,6 @@ body {
 }
 .content-main{
   flex: 1;
-  margin-top: 6rem;
-  /* ヘッダーの高さ分だけ余白を追加 */
-  padding: 1rem;
-  /* 必要に応じて調整 */
 }
 header,
 footer{
