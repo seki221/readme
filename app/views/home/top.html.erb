@@ -1,41 +1,59 @@
-<div class="firstview">
-  <div class="firstview__eyecatch">
-    <img src="assets/firstview.jpg" alt="" class="firstview__eyecatch img">
-    <h1 class="firstview__content">たびログ</h1>
-    
+<div class="top">
+  <div class="title-section">
+    <h1 class="site-logo">たびログ</h1>
   </div>
-</div>
-<!-- シェアタグ -->
-<div>
-  <div class="share-field mb-4">
-    <p>シェアする: </p>
-    <%= link_to "https://twitter.com/intent/tweet?text=#{URI.encode_www_form_component(t("views.share.twitter"))}&url=#{URI.encode_www_form_component(request.original_url)}", target: "_blank", rel: "noopener", class: "share-button share-button-twitter" do %>
-      <i class="fa-brands fa-x-twitter"></i>
-    <% end %>
-    <%= link_to "https://social-plugins.line.me/lineit/share?url=#{CGI.escape(request.original_url)}", target: "_blank", rel: "noopener", class: "share-button share-button-line" do %>
-      <span>LINE</span>
-    <% end %>
-  </div>
-</div>
-<!-- 最新記事情報 -->
-<div>
-  <h1 class="text-center mb-4"><%= t("views.headings.recent") %></h1>
-  <div class="mb-4">
-    
-  </div>
-</div>
-<!-- このアプリの意義的なメッセージ -->
-<div id="about">
-  <div class="container">
-    <div class="common__block">
-    <p class="common__sub-ttl">about</p><p>
-    
-    </div>
-    <div class="flex__item">
+
+  <!-- 最新記事情報 -->
+  <div class="recent-posts">
+    <h2><%= t("views.headings.recent") %></h2>
+    <div class="card-container">
+      <% @planners.first(5).each do |planner| %>
+        <div class="post-card d-flex mt-3 p-3">
+          <div class="d-flex"style="flex-direction:column;">
+            <span class="start">
+              <%= l planner.start_date, format: :default if planner.start_date.present? %>
+            </span>
+            <span>~</span>
+            <span class="end">
+              <%= l planner.end_date, format: :default if planner.end_date.present? %>
+            </span>
+          </div>
+          <h3 class="post-title"><%= link_to planner.title, planner_path(planner) %></h3>
+          
+        </div>
+      <% end %>
+
       
-      <div class="about__item-img">
-        <img src="img/about.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- このアプリの意義的なメッセージ -->
+  <div id="about">
+    <div class="container">
+      <div class="common__block">
+      <h4 class="common__sub-ttl">about</h4>
+      </div>
+      <div class="flex__item">
+        <p class="setemei">
+
+        </p>
+        <div class="about__item-img">
+          <img src="img/about.jpg" alt="">
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+
+  <!-- シェアタグ -->
+  <div>
+    <div class="share-buttons mb-4">
+      <p class="share">シェアする: </p>
+      <%= link_to "https://twitter.com/intent/tweet?text=#{URI.encode_www_form_component(t("views.share.twitter"))}&url=#{URI.encode_www_form_component(request.original_url)}", target: "_blank", rel: "noopener", class: "share-button share-button-twitter" do %>
+        <i class="fa-brands fa-twitter"></i>
+      <% end %>
+      <%= link_to "https://social-plugins.line.me/lineit/share?url=#{CGI.escape(request.original_url)}", target: "_blank", rel: "noopener", class: "share-button share-button-line" do %>
+        <span>LINE</span>
+      <% end %>
+    </div>
+  </div>
