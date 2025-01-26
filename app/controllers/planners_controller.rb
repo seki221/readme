@@ -1,8 +1,8 @@
 class PlannersController < ApplicationController
-  skip_before_action :require_login, only: %i[index show]
+  # skip_before_action :require_login, only: %i[index show]
   # before_action :authenticate_user! 
-  before_action :find_planner, only: %i[edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
+  before_action :find_planner, only: %i[edit update destroy]
   
 
   def index

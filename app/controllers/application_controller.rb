@@ -1,14 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
-  before_action :require_login
+  # before_action :require_login
 
   private
-  def require_login
-    unless user_signed_in?
-      redirect_to login_path, alert: 'ログインが必要です。'
-    end
-  end
+  # def require_login
+  #   unless user_signed_in?
+  #     redirect_to login_path, alert: 'ログインが必要です。'
+  #   end
+  # end
 
   def configure_permitted_parameters
     if resource_class == User
