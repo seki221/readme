@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_schedules, through: :favorites, source: :schedule
 
+  enum role: { general: 0, admin: 1 } #追加
+
+
   def own?(schedule)
     self.id == schedule.user_id
   end
