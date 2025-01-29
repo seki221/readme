@@ -17,22 +17,32 @@
               <%= link_to 'Home' , root_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'マイページ', root_path , class: 'nav-link' %>
+              <%= link_to 'マイページ', mypage_path , class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
-            </li>
+            
             <li class="nav-item before-login">
             <%= link_to "思い出ボックス", planners_path, class: 'nav-link text-dark' %>
             </li>
-            <li class="nav-item before-login">
-              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item before-login">
-              <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item before-login">
-            <%= link_to "ゲストログイン", new_user_registration_path, method: :post, class: 'nav-link text-dark' %>
+            <!-- session -->
+            
+            <ul class="nav-item dropdown before-login">
+              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ログイン
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <%= link_to 'ログイン', new_user_session_path, class: 'dropdown-item' %>
+                </li>
+                <li>
+                  <%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'dropdown-item' %>
+                </li>
+                <li>
+                  <%= link_to "ゲストログイン", new_user_registration_path, method: :post, class: 'dropdown-item' %>
+                </li>
+              </ul>
+            </ul>
+            <li class="nav-item">
+              <%= link_to 'このアプリについて', root_path , class: 'nav-link' %>
             </li>
           </ul>
         </div>
