@@ -1,2 +1,12 @@
-@import "application.bootstrap";
-@import "admin_teq/assets/dist/css/dashboard";
+body.admin {
+  background-color: #f8f9fa;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+.btn {
+  margin-right: 5px;
+}
