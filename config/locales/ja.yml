@@ -20,6 +20,12 @@ ja:
         success: "ユーザー登録が完了しました"
         failure: "ユーザー登録に失敗しました"
       user_information_update: "ユーザー情報を変更しました"
+  views:
+    share:
+      tabi: "たびログをシェア!"
+      twitter:  "たびログをシェアする"
+    headings:
+      recent: "最近の投稿"
   schedules:
     index:
       title: "掲示板一覧"
@@ -49,3 +55,11 @@ ja:
       datetime: "%Y.%m.%d %H時%M分"
       day: "%d"
       only_time: "%H:%M"
+  admin:
+    actions:
+      dashboard:
+        title: "ダッシュボード"
+        menu: "メニュー"
+    misc:
+      navigation: "ナビゲーション"
+      ago: "前"
