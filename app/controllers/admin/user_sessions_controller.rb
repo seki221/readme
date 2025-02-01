@@ -1,6 +1,6 @@
 class Admin::UserSessionsController < Admin::BaseController
-  skip_before_action :require_login, only: %i[new create]
-  skip_before_action :check_admin, only: %i[new create]
+  before_action :require_login, only: %i[new create]
+  before_action :check_admin, only: %i[new create]
   layout 'admin_login'
 
   def create
@@ -15,5 +15,34 @@ class Admin::UserSessionsController < Admin::BaseController
   def destroy
     logout
     redirect_to admin_login_path, notice: t('.logout_success')
+  end
+
+  # before_action :configure_sign_in_params, only: [:create]
+  # skip_before_action :require_login, only: %i[new create]
+  # GET /resource/sign_in
+  # def new
+  #   super
+  # end
+
+  # POST /resource/sign_in
+  # def create
+  #   super
+  # end
+
+  # DELETE /resource/sign_out
+  # def destroy
+  #   super
+  # end
+
+  # protected
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  # end
+  private
+  def require_login
+    # ログインチェックの実装例
+    redirect_to login_path unless logged_in?
   end
 end
