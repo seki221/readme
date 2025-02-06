@@ -66,7 +66,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'minitest', '~> 5.25'
   gem 'rdoc', '~> 6.8'
-  
+  gem 'rspec-rails', '~> 5.0'
+
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "rubocop-rails-omakase", require: false
 end
 
 gem 'rails-i18n', '~> 7.0.0'
