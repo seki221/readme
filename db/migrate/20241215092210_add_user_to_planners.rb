@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserToPlanners < ActiveRecord::Migration[6.1]
   def change
     # 1. NULLを許可してuser_idを追加

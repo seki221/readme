@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OauthsController < ApplicationController
   skip_before_action :require_login, raise: false
 
@@ -10,14 +12,14 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
 
     flash_provider =
-    case provider
-    # when "twitter" then "X"
-    when "google" then "Google"
-    end
+      case provider
+      # when "twitter" then "X"
+      when 'google' then 'Google'
+      end
 
     existing_user = User.find_by(email: params[:email])
 
-    if @user = login_from(provider)
+    if (@user = login_from(provider))
       redirect_to root_path, success: "#{flash_provider}アカウントでログインしました"
     else
       begin

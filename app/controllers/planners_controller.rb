@@ -1,16 +1,26 @@
+# frozen_string_literal: true
+
 class PlannersController < ApplicationController
   # skip_before_action :require_login, only: %i[index show]
-  # before_action :authenticate_user! 
+  # before_action :authenticate_user!
   before_action :correct_user, only: %i[edit update destroy]
   before_action :find_planner, only: %i[edit update destroy]
-  
 
   def index
     @planners = Planner.all
   end
 
+  def show
+    @planner = Planner.find(params[:id])
+    @schedules = @planner.schedules
+  end
+
   def new
     @planner = Planner.new
+  end
+
+  def edit
+    @planner = current_user.planners.find(params[:id])
   end
 
   def create
@@ -24,24 +34,14 @@ class PlannersController < ApplicationController
     end
   end
 
-  def show
-    @planner = Planner.find(params[:id]) 
-    @schedules = @planner.schedules
-  end
-
   def update
     @planner = current_user.planners.find(params[:id])
     if @planner.update(planner_params)
-      redirect_to @planner, notice: 'Planner was successfully updated.'
+      redirect_to @planner, notice: t('Planner.updated')
     else
       render :edit
     end
   end
-
-  def edit
-  @planner = current_user.planners.find(params[:id])
-  end
-
 
   def destroy
     # binding.break
@@ -55,9 +55,8 @@ class PlannersController < ApplicationController
     end
   end
 
-
   private
-  
+
   def planner_params
     params.require(:planner).permit(:title, :start_date, :end_date)
   end
