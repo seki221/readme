@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :transportation do
-    category { "MyString" }
+    category { 'MyString' }
   end
 end

@@ -26,6 +26,11 @@ ja:
       twitter:  "たびログをシェアする"
     headings:
       recent: "最近の投稿"
+    review:
+      create: "レビューが作成されました。"
+      miss: "レビューの作成に失敗しました。"
+  planners:
+    update: "更新しました"
   schedules:
     index:
       title: "掲示板一覧"
@@ -35,11 +40,15 @@ ja:
       title: "新規作成"
       create: "作成する"
       next: "次へ進む"
+    create: "スケジュールが作成されました。"
+    update: "スケジュールが更新されました。"
     show:
       title: "掲示板詳細"
     edit:
       title: "予定編集"
       edit: "保存する"
+    destroy: "スケジュールを削除しました"
+
   date:
     formats:
       default: "%Y.%m.%d.(%a)"
@@ -60,6 +69,5 @@ ja:
       dashboard:
         title: "ダッシュボード"
         menu: "メニュー"
-    misc:
-      navigation: "ナビゲーション"
-      ago: "前"
+  errors:
+    unauthorized: "権限がありません"

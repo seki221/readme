@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :data_migration do
   desc 'Migrate schedules to planners'
   task migrate_schedules_to_planners: :environment do

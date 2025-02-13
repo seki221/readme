@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root to: 'home#top'
   # davise関係
   devise_for :users, controllers: {
-    registrations: "users/registrations",
-    sessions: "users/sessions",
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   # devise_scope :user do
   #   get '/users/sign_in'
   #   get '/users/sign_out' => 'devise/sessions#destroy'
-  
+
   # end
 
   # OAuthログイン関連
@@ -17,14 +19,13 @@ Rails.application.routes.draw do
   get 'oauth/callback', to: 'oauths#callback'
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
 
-
   # 管理者関連
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :admin do
-    root "dashboards#index"
+    root 'dashboards#index'
     resources :dashboards, only: [:index]
-    resources :users, only: [:index, :edit, :update, :destroy]
-    resources :user_sessions, only: [:new, :create, :destroy], path_names: { new: "login", destroy: "logout" }
+    resources :users, only: %i[index edit update destroy]
+    resources :user_sessions, only: %i[new create destroy], path_names: { new: 'login', destroy: 'logout' }
   end
 
   # planページ
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #mypage
+  # mypage
   resource :mypage, only: %i[show edit update] do
     get 'submit_plans', to: 'users#submit_plans'
     get 'evaluated_plans', to: 'users#evaluated_plans'

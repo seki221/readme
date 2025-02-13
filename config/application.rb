@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 require 'carrierwave'
 
 # Require the gems listed in Gemfile, including any gems
@@ -17,7 +19,7 @@ module TripScheduleApp
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    config.time_zone = "Tokyo"
+    config.time_zone = 'Tokyo'
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
